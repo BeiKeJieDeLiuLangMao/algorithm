@@ -9,7 +9,7 @@ package bbm.sort;
  *
  * @author bbm
  */
-public class InsertSort implements Sorter {
+public class InsertSorter implements Sorter {
 
     @Override
     public int[] sort(int[] nums) {
