@@ -2,6 +2,10 @@ package bbm.sequence;
 
 /**
  * 基于分治思想的最大子序列，递归地将序列分割成两半，然后比较左半段，右半段，和中间跨越的段，最终取最大的作为结果
+ *
+ * 时间复杂度: O(n*log(n))
+ * 空间复杂度: O(log(n)) 栈
+ *
  * @author bbm
  */
 public class MaxSubSequence {
