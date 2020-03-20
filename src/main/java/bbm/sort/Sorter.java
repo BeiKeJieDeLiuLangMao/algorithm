@@ -1,7 +1,7 @@
 package bbm.sort;
 
 /**
- * @author Chen Yang/CL10060-N/chen.yang@linecorp.com
+ * @author bbm
  */
 public interface Sorter {
     /**

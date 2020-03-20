@@ -9,7 +9,7 @@ package bbm.sort;
  * 最佳时间复杂度: O(n)
  * 空间复杂度: O(1)
  *
- * @author Chen Yang/CL10060-N/chen.yang@linecorp.com
+ * @author bbm
  */
 public class InsertSort implements Sorter {
 

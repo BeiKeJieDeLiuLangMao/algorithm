@@ -3,7 +3,7 @@ package bbm.sort;
 import org.junit.jupiter.api.Test;
 
 /**
- * @author Chen Yang/CL10060-N/chen.yang@linecorp.com
+ * @author bbm
  */
 public class SorterTest {
 

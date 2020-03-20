@@ -4,7 +4,7 @@ package bbm.sort;
  * 利用分治思想，将数组平均地划分为 2 段，然后对这两段递归地再向下划分，直到每段的长度都为 1 时（长度为 1 意味着已经有序），开始进行合并
  * 合并过程就是不断地从要合并的两段（有序）数组中找最小的数，然后放入一个新的排好序的数组中
  *
- * @author Chen Yang/CL10060-N/chen.yang@linecorp.com
+ * @author bbm
  */
 public class MergeSorter implements Sorter {
     @Override
