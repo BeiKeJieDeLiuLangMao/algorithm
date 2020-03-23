@@ -9,8 +9,8 @@ public class SorterTest {
 
     @Test
     public void testSort() {
-        Sorter sorter = new HeapSort();
-        int[] result = sorter.sort(new int[] {-4,0,7,4,9,-5,-1,0,-7,-1});
+        Sorter sorter = new QuickSorter();
+        int[] result = sorter.sort(new int[] {5,1,0,0,1,2});
         sorter.print(result);
     }
 }

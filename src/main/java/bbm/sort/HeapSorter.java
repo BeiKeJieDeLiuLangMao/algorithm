@@ -18,7 +18,7 @@ package bbm.sort;
  *
  * @author bbm
  */
-public class HeapSort implements Sorter {
+public class HeapSorter implements Sorter {
 
     @Override
     public int[] sort(int[] nums) {
