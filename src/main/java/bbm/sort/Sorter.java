@@ -19,7 +19,7 @@ public interface Sorter {
      */
     default void print(int[] nums) {
         for (int num : nums) {
-            System.out.print(num);
+            System.out.print(num + " ");
         }
         System.out.println();
     }
