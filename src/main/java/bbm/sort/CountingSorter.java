@@ -6,7 +6,7 @@ package bbm.sort;
  * 然后，我们扫描待排序的数组，根据该数 i 在 counts 数组中的记录，可以得到 nums 中小于 i 的元素个数，也就得到 i 所处的正确位置
  *
  * 时间复杂度: O(n + k)
- * 空间复杂度: O(n + k)
+ * 空间复杂度: O(n + k) 能优化到 O(k)
  *
  * 我觉得在 counts 中没必要记录小于 i 的元素个数，只需要记录等于 i 的元素个数就够了，这时候我们只需要从左到右遍历 counts
  * 每当 number = counts[index] > 0 时，只需要将 number 个 index 推入 result 数组即可，理论上它和计数排序效率差不多
