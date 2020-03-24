@@ -14,6 +14,8 @@ import java.util.Set;
  * 使用x作为主元素执行快排的 PARTITION，计算得出 x 为第 k 小的元素
  * 如果目标值 i==k，返回x；如果i<k，在低区调用PARTITION找出第i小的元素；如果i>k，在高区调用PARTITION查找第i-k小的元素
  *
+ * 时间复杂度: O(n)
+ *
  * @author bbm
  */
 public class StableOrderStatistic {
