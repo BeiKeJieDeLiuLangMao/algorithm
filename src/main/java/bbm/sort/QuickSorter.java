@@ -48,7 +48,7 @@ public class QuickSorter implements Sorter {
         return partition(nums, p, r);
     }
 
-    private int partition(int[] nums, int p, int r) {
+    private static int partition(int[] nums, int p, int r) {
         int pivot = nums[r];
         int leftEnd = p - 1;
         for (int rightEnd = p; rightEnd < r; rightEnd++) {
