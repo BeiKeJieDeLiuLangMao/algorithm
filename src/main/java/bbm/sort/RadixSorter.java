@@ -21,13 +21,13 @@ public class RadixSorter implements Sorter {
             int mod = (int) (Math.pow(10, i));
             int div = (int) (Math.pow(10, i - 1));
             for (int num : nums) {
-                int digit = num % mod/ div;
+                int digit = num % mod / div;
                 sort[digit + 10][numbers[digit + 10]] = num;
                 numbers[digit + 10] += 1;
             }
             int index = 0;
             for (int k = 0; k < 20; k++) {
-                for (int l = 0; l < numbers[k]; l ++) {
+                for (int l = 0; l < numbers[k]; l++) {
                     nums[index] = sort[k][l];
                     index++;
                 }

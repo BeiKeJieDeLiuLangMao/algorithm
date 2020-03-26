@@ -18,10 +18,11 @@ import java.util.Set;
  *
  * @author bbm
  */
-public class StableOrderStatistic {
+public class StableOrderStatistic implements OrderStatistic{
 
     private static final int n = 3;
 
+    @Override
     public int getNLargestNumber(int[] nums) {
         Set<Integer> set = new HashSet<>();
         for (int i = 0; i < nums.length; i++) {

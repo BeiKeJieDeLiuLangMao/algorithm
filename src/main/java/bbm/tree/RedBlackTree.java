@@ -87,13 +87,16 @@ public class RedBlackTree {
     }
 
     /**
-     *
+     * 1. 找到正确的位置
+     * 2. 修正引用关系
+     * 3. 新节点置为红色
+     * 4. 修正颜色性质
      */
     public void insert(Node z) {
         Node y = null;
         Node x = this.root;
         // 从 root 出发，找到新节点 z 的合适位置, y 记录着合适位置的父节点
-        while(x != null) {
+        while (x != null) {
             y = x;
             if (z.getData() < x.getData()) {
                 x = x.getLeft();
@@ -116,7 +119,7 @@ public class RedBlackTree {
     }
 
     /**
-     * 修正节点颜色，没当我们把一个节点的颜色置为红色是，就得看看是不是需要修正一下颜色
+     * 修正节点颜色，没当我们把一个节点的颜色置为红色是，就得看看是不是需要修正一下颜色, 本文中 B = Black R = Red
      *
      * 我们面临如下情况：
      * 1. 新节点是根，只需要将其颜色置为黑
@@ -157,7 +160,7 @@ public class RedBlackTree {
      *
      */
     private void insertFixUp(Node z) {
-        while(z != this.root && z.getParent().getColor() == RED) {
+        while (z != this.root && z.getParent().getColor() == RED) {
             Node y;
             Node grandParent = z.getParent().getParent();
             if (z.getParent() == grandParent.getLeft()) {
@@ -224,6 +227,16 @@ public class RedBlackTree {
         } else if (node.getColor() != RED && node.getColor() != BLACK) {
             throw new RuntimeException("违反性质1: 每个结点或是红色的, 或是黑色的");
         } else {
+            if (node.getLeft() != null) {
+                if (node.getLeft().getData() > node.getData()) {
+                    throw new RuntimeException("违反二叉树性质: 左节点应小于父节点");
+                }
+            }
+            if (node.getRight() != null) {
+                if (node.getRight().getData() < node.getData()) {
+                    throw new RuntimeException("违反二叉树性质: 右节点应大于父节点");
+                }
+            }
             if (node.getColor() == RED) {
                 if (node.getLeft() != null && node.getLeft().getColor() != BLACK) {
                     throw new RuntimeException("违反性质4: 如果一个结点是红色的, 则它的两个子结点都是黑色的");
@@ -247,51 +260,55 @@ public class RedBlackTree {
      * 删除节点有三种情况：
      * 1. 节点 z 没有子节点，这时候只需要修改起父节点，用 null 代替 z
      * 2. 节点 z 只有一个子节点，那么用该子节点代替 z
-     * 3. 节点 z 有2个子节点，这时候我们需要找到右子树中最小的节点，让这个最小的节点代替 z
+     * 3. 节点 z 有2个子节点，这时候我们需要找到右子树中最小的节点，让这个最小的节点和 z 互换，然后删除右子树的最小节点
+     * 这就将带删除节点是有两个子节点的问题转化成了待删除节点最多只有一个右节点的问题
+     *
+     * 删掉节点后，我们需要检查红黑树的性质是否仍然满足，这里就需要检查真正移除节点的颜色了，如果移除节点是红色，那么移除它黑高不会受到影响
+     * 而且红节点的父节点必是黑色，如果有子节点肯定也是黑色，删除中间的红节点后，变成黑色的父节点和黑色的子节点相连，也不违反性质
+     *      B(parent)      B(parent)
+     *         /              /
+     *      R(z)           B(child)
+     *      /
+     *    B(child)
+     * 本文中 B = Black R = Red
+     *
+     * 看来只会在被删除节点是黑色时才会出现问题，因为删掉它必然导致所有子节点黑高 - 1，而且也会出现红红相邻的问题
+     * 在 {@link RedBlackTree#deleteFixup(Node, Node)} 我们挨个分析这类情况
      */
     public void delete(Node z) {
-        Node colorNode = z;
-        Node movedNode;
-        Node movedNodeFinalParent;
+        Node removedNode = z;
+        Node removedNodeParent = z.getParent();
+        Node successor;
         if (z.getLeft() != null && z.getRight() != null) {
-            // 情况3 节点 z 有2个子节点，这时候我们需要找到右子树中最小的节点，让这个最小的节点代替 z
-            Node successor = treeMinimum(z);
-            colorNode = successor;
-            Node successorRight = successor.getRight();
-            movedNode = successorRight;
-            movedNodeFinalParent = successor.getParent();
-            if (successorRight != null) {
-                successorRight.setParent(successor.getParent());
-            }
-            if (successor.getParent().getLeft() == successor) {
-                successor.getParent().setLeft(successorRight);
-            } else {
-                successor.getParent().setRight(successorRight);
-            }
-            z.copyFrom(successor);
+            // 情况3 节点 z 有2个子节点，这时候我们需要找到右子树中最小的节点，让这个最小的节点和 z 互换身份，然后删除右子树的最小节点
+            Node rightSubTreeMinNode = treeMinimum(z.getRight());
+            // 右子树最小节点和待删除节点 z 互换，这里只换值，相当于 z 已经删除了
+            z.copyFrom(rightSubTreeMinNode);
+            // 互换完成后，我们的问题就转化为删除右子树最小节点了
+            removedNode = rightSubTreeMinNode;
+            removedNodeParent = rightSubTreeMinNode.getParent();
+            successor = rightSubTreeMinNode.getRight();
+            fixReference(rightSubTreeMinNode, rightSubTreeMinNode.getRight());
         } else if (z.getLeft() != null) {
             // 情况2 节点 z 有1个子节点，那么用该子节点代替 z
-            movedNode = z.getLeft();
-            movedNodeFinalParent = z.getParent();
-            fixParentReference(z, z.getLeft());
+            successor = z.getLeft();
+            fixReference(z, z.getLeft());
         } else if (z.getRight() != null) {
             // 情况2 节点 z 有1个子节点，那么用该子节点代替 z
-            movedNode = z.getRight();
-            movedNodeFinalParent = z.getParent();
-            fixParentReference(z, z.getRight());
+            successor = z.getRight();
+            fixReference(z, z.getRight());
         } else {
             // 情况1 节点 z 没有子节点，这时候只需要修改起父节点，用 null 代替 z
-            movedNode = null;
-            movedNodeFinalParent = z.getParent();
-            fixParentReference(z, null);
+            successor = null;
+            fixReference(z, null);
         }
-        if (colorNode.getColor() == BLACK) {
-            this.deleteFixup(movedNode, movedNodeFinalParent);
+        if (removedNode.getColor() == BLACK) {
+            this.deleteFixup(successor, removedNodeParent);
         }
         this.verify();
     }
 
-    private void fixParentReference(Node deleted, Node newNode) {
+    private void fixReference(Node deleted, Node newNode) {
         if (deleted.getParent() == null) {
             root = newNode;
         } else if (deleted == deleted.getParent().getLeft()) {
@@ -305,44 +322,117 @@ public class RedBlackTree {
     }
 
     private Node treeMinimum(Node x) {
-        while(x.getLeft() != null) {
+        while (x.getLeft() != null) {
             x = x.getLeft();
         }
         return x;
     }
 
+    /**
+     * 在上一步中，我们已经将待删除节点有两个子节点的问题转化为待删除节点最多只有一个子节点 x 的问题，接下来我们以子节点 x 是左节点为例
+     * 分情况讨论，本文中 B = Black R = Red：
+     * 1. 如果该节点的孩子 x 为红色，直接拿孩子节点 x 替换被删除的节点，并将孩子节点染成黑色，即可恢复性质5（黑高相同）。
+     *           ?(xParent)             ?(xParent)
+     *           /   \                    /  \
+     *    B（deleted）?(brother)  ->    B(x) ?(brother)
+     *       /
+     *     R(x)
+     * 2. 又或者删除的节点是根节点，这时候整个树的黑高都会 -1，最终任意路径黑高都是相等的，删除之后接替者 x 变成了根，这时候我们只需要保证
+     * 性质2（根节点是黑色）即可
+     *      B(deleted root)                B(x root)
+     *        /                ->
+     *     ？(x)
+     * 3. 接下来我们看一下复杂的情况，即被删除的子节点 x 的颜色是黑色的情况, 在开始之前我们先要只要待删除节点是肯定有兄弟节点的
+     * 因为待删除节点是黑色，如果它没有兄弟节点的话，parent 的左右两条链路黑高就不等了所以在情况 1 中我的图示中才画了了一个颜色未知的 brother 节点
+     *      ?(xParent)
+     *       /   \
+     *   B(x)   ?(brother)
+     * 在接下来的讨论中，我们不再考虑被删除的节点，直接讨论删除之后的节点关系图，如上图所示。
+     *      3.1 这里我们先看 brother 是黑色的情况：
+     *          3.1.1 x 的兄弟节点 brother 是黑色，且 brother 的两个子节点都是黑色, 因为之前的删除操作导致 x 黑高 -1，这时候为了弥补左支的黑高，
+     *          我们将右支的黑高也 -1，即 brother 变为红色，这时候左右两支的黑高就平衡了，但是通过 parent 的黑高都 -1 了，这时候我们递归的处理
+     *          parent 节点黑高 -1 的问题，即 parent -> x, parent.parent -> xParent, 如果这样递归向上处理势必最红会到达根节点，
+     *          届时整个树的黑高都会 -1，又或者通过如下的其他方式达到平衡
+     *              ?(xParent)                  ?(xParent)                           ?(newX)
+     *              /   \                          /   \                             /   \
+     *          B(x)   B(brother)              B(x)    R(brother)           B(previousX) R(previousBrother)
+     *                  /     \                         /     \                            /     \
+     *              B(BLeft)  B(BRight)               B(BLeft)  B(BRight)             B(PBLeft)  B(PBRight)
+     *
+     *          3.1.2 x 的兄弟节点 brother 是黑色，并且 brother 的右孩子是红色（brother 的左孩子可以是任意），这时候我们将 brother
+     *          节点变为 parent 的颜色，然后将 parent 节点变为黑色，brother 的右子节点变为黑色，然后我们以 parent 为中心左旋，左旋之后
+     *          你会发现之前的 x 节点黑高 +1 了，并且之前兄弟节点的左子节点的链路仍然保持 ? -> B -> ?, 右子节点的链路由 ? -> B -> R 变为
+     *          ？ -> B 但是黑高仍然没变，也就是说通过上述操作让 x 黑高保持不变，并且 x 的 brother 的子节点黑高不变
+     *              ?(xParent)                  B(xParent)                           ?(previousBrother)
+     *              /   \                          /   \                             /           \
+     *          B(x)   B(brother)              B(x)    ?(brother)           B(previousParent) B(PBRight)
+     *                  /     \                         /     \                  /      \
+     *              ？(BLeft)  R(BRight)               ?(BLeft)  B(BRight) B(previousX) ?(PBLeft)
+     *
+     *          3.1.3 x 的兄弟节点 brother 是黑色，并且 brother 的左节点红色，右节点是黑色，这时候我们将 brother 节点变为红色，brother 的
+     *          左节点变为黑色，然后以 brother 为中心右旋，这两部操作能够保证 brother 的左右子节点黑高不变，brother 的左节点从 ? -> B -> R
+     *          变成了 ? -> B, brother 的右节点从 ? -> B -> B 变成 ? -> B -> R -> B，它们的黑高都没变，这两部操作看似好像没啥实际作用，
+     *          但它成功地将情况 3.1.3 转化为了情况 3.1.2，之后只需要按照情况 3.1.2 处理即可
+     *              ?(xParent)                  ?(xParent)                           ?(x)
+     *              /   \                          /   \                             /   \
+     *          B(x)   B(brother)              B(x)    R(brother)           B(previousX) B(PBLeft)
+     *                 /     \                         /     \                               \
+     *              R(BLeft)  B(BRight)           B(BLeft)  B(BRight)                 R(previousBrother)
+     *                                                                                         \
+     *                                                                                       B(PBRight)
+     *
+     *       3.2 然后我们再看看 brother 是红色的情况，只要我们将 brother 变为黑色，parent 变为红色，然后以 parent 为中心左旋，就能让
+     *       brother 的左右节点黑高不变，brother 的左节点由 B -> R -> B 变为 B -> R -> B, 右节点由 B -> R -> B 变为 B -> B
+     *       但是之前的 X 节点黑高也没有发生变化，即由 B -> B 变为 B -> R -> B，但是这时候观察之前的 x 节点和 brother 节点的左节点
+     *       的位置，你会发现实际上之前 brother 的左节点已经变成了 x 的新 brother，并且该 brother 是黑色，这就将情况 3.2 转化为了
+     *       情况 3.1，接下来我们可以按照情况 3.1 的方式来处理了
+     *           B(xParent)                      R(xParent)                           B(previousBrother)
+     *               /   \                          /   \                             /   \
+     *           B(x)   R(brother)              B(x)    B(brother)           R(previousParent) B(PBRight)
+     *                  /     \                         /     \                      /   \
+     *              B(BLeft)  B(BRight)               B(BLeft)  B(BRight)   B(previousX) B(PBLeft)
+     */
     private void deleteFixup(Node x, Node xParent) {
-        while(x != this.root && (x == null || x.getColor() == BLACK)) {
-            Node w;
+        while (x != this.root && (x == null || x.getColor() == BLACK)) {
+            // 情况3 被删除的子节点 x 的颜色是黑色
+            Node brother;
             if (x == xParent.getLeft()) {
-                w = xParent.getRight();
-                if (w == null) {
+                // x 是左节点，也就是我们上述讨论的情况
+                brother = xParent.getRight();
+                if (brother == null) {
                     throw new RuntimeException("x's sibling should not be null");
                 }
 
-                if (w.getColor() == RED) {
-                    w.setColor(BLACK);
+                if (brother.getColor() == RED) {
+                    // 情况 3.2，只要我们将 brother 变为黑色，parent 变为红色，然后以 parent 为中心左旋将转化为情况 3.1
+                    brother.setColor(BLACK);
                     xParent.setColor(RED);
                     this.leftRotate(xParent);
-                    w = xParent.getRight();
+                    brother = xParent.getRight();
                 }
 
-                if ((w.getLeft() == null || w.getLeft().getColor() == BLACK) && (w.getRight() == null || w.getRight().getColor() == BLACK)) {
-                    w.setColor(RED);
+                if ((brother.getLeft() == null || brother.getLeft().getColor() == BLACK)
+                    && (brother.getRight() == null || brother.getRight().getColor() == BLACK)) {
+                    // 情况 3.1.1 将兄弟节点置为红色，然后递归的处理 parent 节点
+                    brother.setColor(RED);
                     x = xParent;
                     xParent = xParent.getParent();
                 } else {
-                    if (w.getRight() == null || w.getRight().getColor() == BLACK) {
-                        w.getLeft().setColor(BLACK);
-                        w.setColor(RED);
-                        this.rightRotate(w);
-                        w = xParent.getRight();
+                    if (brother.getRight() == null || brother.getRight().getColor() == BLACK) {
+                        // 情况 3.1.3 brother 左节点为红右节点为黑，这时候我们将 brother 节点变为红色，brother 的左节点变为黑色，
+                        // 然后以 brother 为中心右旋，成功将情况转化为 3.1.2
+                        brother.getLeft().setColor(BLACK);
+                        brother.setColor(RED);
+                        this.rightRotate(brother);
+                        brother = xParent.getRight();
                     }
-
-                    w.setColor(xParent.getColor());
+                    // 情况3.1.2 brother 的右节点为红色，将 brother节点变为 parent 的颜色，然后将 parent 节点变为黑色
+                    // brother 的右子节点变为黑色，然后我们以 parent 为中心左旋，x 节点的黑高 +1 并且 brother 子节点黑高不变
+                    // 将 x 赋值为 root 令循环结束
+                    brother.setColor(xParent.getColor());
                     xParent.setColor(BLACK);
-                    if (w.getRight() != null) {
-                        w.getRight().setColor(BLACK);
+                    if (brother.getRight() != null) {
+                        brother.getRight().setColor(BLACK);
                     }
 
                     this.leftRotate(xParent);
@@ -350,34 +440,42 @@ public class RedBlackTree {
                     xParent = x.getParent();
                 }
             } else {
-                w = xParent.getLeft();
-                if (w == null) {
+                // x 是右节点，只需要涉及到左右方向的过程都反转即可
+                brother = xParent.getLeft();
+                if (brother == null) {
                     throw new RuntimeException("x's sibling should not be null");
                 }
 
-                if (w.getColor() == RED) {
-                    w.setColor(BLACK);
+                if (brother.getColor() == RED) {
+                    // 情况 3.2，只要我们将 brother 变为黑色，parent 变为红色，然后以 parent 为中心右旋将转化为情况 3.1
+                    brother.setColor(BLACK);
                     xParent.setColor(RED);
                     this.rightRotate(xParent);
-                    w = xParent.getLeft();
+                    brother = xParent.getLeft();
                 }
 
-                if ((w.getRight() == null || w.getRight().getColor() == BLACK) && (w.getLeft() == null || w.getLeft().getColor() == BLACK)) {
-                    w.setColor(RED);
+                if ((brother.getRight() == null || brother.getRight().getColor() == BLACK)
+                    && (brother.getLeft() == null || brother.getLeft().getColor() == BLACK)) {
+                    // 情况 3.1.1 将兄弟节点置为红色，然后递归的处理 parent 节点
+                    brother.setColor(RED);
                     x = xParent;
                     xParent = xParent.getParent();
                 } else {
-                    if (w.getLeft() == null || w.getLeft().getColor() == BLACK) {
-                        w.getRight().setColor(BLACK);
-                        w.setColor(RED);
-                        this.leftRotate(w);
-                        w = xParent.getLeft();
+                    if (brother.getLeft() == null || brother.getLeft().getColor() == BLACK) {
+                        // 情况 3.1.3 brother 右节点为红左节点为黑，这时候我们将 brother 节点变为红色，brother 的右节点变为黑色，
+                        // 然后以 brother 为中心左旋，成功将情况转化为 3.1.2
+                        brother.getRight().setColor(BLACK);
+                        brother.setColor(RED);
+                        this.leftRotate(brother);
+                        brother = xParent.getLeft();
                     }
-
-                    w.setColor(xParent.getColor());
+                    // 情况3.1.2 brother 的左节点为红色，将 brother节点变为 parent 的颜色，然后将 parent 节点变为黑色
+                    // brother 的左子节点变为黑色，然后我们以 parent 为中心右旋，x 节点的黑高 +1 并且 brother 子节点黑高不变
+                    // 将 x 赋值为 root 令循环结束
+                    brother.setColor(xParent.getColor());
                     xParent.setColor(BLACK);
-                    if (w.getLeft() != null) {
-                        w.getLeft().setColor(BLACK);
+                    if (brother.getLeft() != null) {
+                        brother.getLeft().setColor(BLACK);
                     }
 
                     this.rightRotate(xParent);
@@ -386,7 +484,7 @@ public class RedBlackTree {
                 }
             }
         }
-
+        // 情况1 + 情况2: 走到这说明待处理节点 x 是红节点或者根节点，将 x 变为黑色即可
         if (x != null) {
             x.setColor(BLACK);
         }

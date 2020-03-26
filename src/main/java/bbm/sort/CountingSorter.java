@@ -48,7 +48,7 @@ public class CountingSorter implements Sorter {
         int index = 0;
         for (int i = 0; i < counts.length; i++) {
             if (counts[i] > 0) {
-                for (int j = 0; j < counts[i];j++) {
+                for (int j = 0; j < counts[i]; j++) {
                     result[index++] = i - 50000;
                 }
             }

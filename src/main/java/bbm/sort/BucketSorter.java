@@ -12,22 +12,22 @@ import java.util.LinkedList;
  *
  * @author bbm
  */
-public class BucketSorter implements Sorter{
+public class BucketSorter implements Sorter {
     @Override
     public int[] sort(int[] nums) {
         LinkedList<Integer>[] buckets = new LinkedList[100000];
         for (int i = 0; i < nums.length; i++) {
-            int bucket = nums[i]  + 50000;
+            int bucket = nums[i] + 50000;
             if (buckets[bucket] == null) {
                 buckets[bucket] = new LinkedList<>();
             }
             buckets[bucket].add(nums[i]);
         }
         int index = 0;
-        for (int i = 0; i < buckets.length; i ++) {
+        for (int i = 0; i < buckets.length; i++) {
             if (buckets[i] != null) {
                 buckets[i].sort(Integer::compareTo);
-                for(int data: buckets[i]) {
+                for (int data : buckets[i]) {
                     nums[index++] = data;
                 }
             }

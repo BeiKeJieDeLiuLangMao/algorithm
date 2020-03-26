@@ -12,10 +12,11 @@ import java.util.Set;
  *
  * @author bbm
  */
-public class RandomOrderStatistic {
+public class RandomOrderStatistic implements OrderStatistic{
 
     private static final int n = 3;
 
+    @Override
     public int getNLargestNumber(int[] nums) {
         Set<Integer> set = new HashSet<>();
         for (int i = 0; i < nums.length; i++) {
@@ -23,7 +24,7 @@ public class RandomOrderStatistic {
         }
         nums = new int[set.size()];
         int index = 0;
-        for (int num: set) {
+        for (int num : set) {
             nums[index++] = num;
         }
         int smallestN;

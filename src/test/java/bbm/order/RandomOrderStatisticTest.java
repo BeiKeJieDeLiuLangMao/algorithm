@@ -1,5 +1,11 @@
 package bbm.order;
 
+import com.google.common.primitives.Ints;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Random;
+import java.util.stream.Collectors;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 /**
@@ -8,8 +14,21 @@ import org.junit.jupiter.api.Test;
 class RandomOrderStatisticTest {
     @Test
     public void testGetNSmallestNumber() {
-        StableOrderStatistic selector = new StableOrderStatistic();
-        int result = selector.getNLargestNumber(new int[] {3,2,3,1,2,4,5,5,6,7,7,8,2,3,1,1,1,10,11,5,6,2,4,7,8,5,6});
-        System.out.println(result);
+        doTest(new RandomOrderStatistic());
+        doTest(new StableOrderStatistic());
+    }
+
+    private void doTest(OrderStatistic orderStatistic) {
+        int dataSize = 10000;
+        int[] data = new int[dataSize];
+        Random rand = new Random(System.currentTimeMillis());
+        for (int i = 0; i < dataSize; i++) {
+            data[i] = rand.nextInt(dataSize);
+        }
+        Arrays.sort(data);
+        Collections.reverse(Ints.asList(data));
+        int rightResult = Ints.asList(data).stream().distinct().collect(Collectors.toList()).get(2);
+        int result = orderStatistic.getNLargestNumber(data);
+        Assertions.assertEquals(rightResult, result);
     }
 }

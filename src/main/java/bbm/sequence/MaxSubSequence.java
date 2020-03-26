@@ -33,7 +33,7 @@ public class MaxSubSequence {
     private int findCrossArray(int[] nums, int low, int mid, int max) {
         int leftMax = Integer.MIN_VALUE;
         int sum = 0;
-        for(int x = mid; x >= low; x--) {
+        for (int x = mid; x >= low; x--) {
             sum += nums[x];
             if (sum > leftMax) {
                 leftMax = sum;
@@ -41,7 +41,7 @@ public class MaxSubSequence {
         }
         sum = 0;
         int rightMax = Integer.MIN_VALUE;
-        for(int x = mid + 1; x <= max; x++) {
+        for (int x = mid + 1; x <= max; x++) {
             sum += nums[x];
             if (sum > rightMax) {
                 rightMax = sum;
