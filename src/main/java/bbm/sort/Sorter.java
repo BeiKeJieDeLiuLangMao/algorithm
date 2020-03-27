@@ -1,6 +1,8 @@
 package bbm.sort;
 
 /**
+ * 排序接口
+ *
  * @author bbm
  */
 public interface Sorter {
