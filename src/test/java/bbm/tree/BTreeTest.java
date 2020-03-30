@@ -1,8 +1,7 @@
 package bbm.tree;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
+
 import org.junit.jupiter.api.Test;
 
 /**
@@ -11,13 +10,13 @@ import org.junit.jupiter.api.Test;
 class BTreeTest {
     @Test
     public void testBTree() {
-        int treeSize = 10;
+        int treeSize = 10000;
         System.err.println("Building tree...");
         BTree tree = new BTree();
         Random rand = new Random(System.currentTimeMillis());
         List<Integer> insertSet = new ArrayList<>();
         int i;
-        /*for (i = 0; i < treeSize; ++i) {
+        for (i = 0; i < treeSize; ++i) {
             int val = rand.nextInt(treeSize) + 1;
 
             try {
@@ -28,27 +27,9 @@ class BTreeTest {
                 var11.printStackTrace();
                 System.exit(1);
             }
-        }*/
-        tree.insert(7);
-        insertSet.add(7);
-        tree.insert(10);
-        insertSet.add(10);
-        tree.insert(6);
-        insertSet.add(6);
-        tree.insert(8);
-        insertSet.add(8);
-        tree.insert(4);
-        insertSet.add(4);
-        tree.insert(1);
-        insertSet.add(1);
-        tree.insert(5);
-        insertSet.add(5);
-        tree.insert(1);
-        insertSet.add(1);
-        tree.insert(6);
-        insertSet.add(6);
-        tree.insert(2);
-        insertSet.add(2);
+        }
+        System.out.println(insertSet.toString());
+        //insertSet.forEach(tree::insert);
 
         System.err.println();
         System.err.println("Searching in tree...");
@@ -69,11 +50,11 @@ class BTreeTest {
             }
         }
 
-        /*System.err.println();
+        System.err.println();
         System.err.println("Churning tree...");
 
         Collections.shuffle(insertSet);
-        Set<Integer> insertSet2 = new HashSet<>();
+        List<Integer> insertSet2 = new ArrayList<>();
         insertSet.forEach(data -> {
             System.err.println("(Removing value " + data + ")");
             tree.delete(data);
@@ -81,11 +62,11 @@ class BTreeTest {
             System.err.println("(Inserting value " + newVal + ")");
             tree.insert(newVal);
             insertSet2.add(newVal);
-        });*/
+        });
 
         System.err.println();
         System.err.println("Clear tree...");
-        insertSet.forEach(data -> {
+        insertSet2.forEach(data -> {
             System.err.println("(Removing value " + data + ")");
             tree.delete(data);
         });

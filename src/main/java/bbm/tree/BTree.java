@@ -4,7 +4,7 @@ package bbm.tree;
  * @author bbm
  */
 public class BTree {
-    private static final int t = 3;
+    private static final int t = 5;
     Node root;
 
     public BTree() {
@@ -67,6 +67,7 @@ public class BTree {
             x.keys[j + 1] = x.keys[j];
         }
         x.keys[i] = y.keys[t - 1];
+        y.keys[t-1] = 0;
         x.keySize = x.keySize + 1;
         // write-disk x
         // write-disk y
@@ -167,8 +168,13 @@ public class BTree {
         for (int j = i + 1; j < r.keySize; j++) {
             r.children[j] = r.children[j + 1];
         }
+        for (int j = i; j < r.keySize - 1; j++) {
+            r.keys[j] = r.keys[j + 1];
+        }
 
         r.keySize -= 1;
+        r.keys[r.keySize] = 0;
+        r.children[r.keySize + 1] = null;
         // disk-write y
         // disk-write z
         // disk-write x
@@ -202,7 +208,7 @@ public class BTree {
                 // disk-read x.children[i]
                 z = x.children[i + 1];
             }
-            if (k == x.keys[i]) {
+            if (i < x.keySize && k == x.keys[i]) {
                 // 如果找到的 k 不处于叶子结点中，我们需要为其找到替换者以保持每个非 root 节点的 key size > t-1
                 if (y.keySize > t - 1) {
                     // 如果小于 k 的子 node key size > t -1 用其最大的 key 替换待删除的 k
@@ -229,7 +235,7 @@ public class BTree {
                     // 如果 k 节点所处的 node 节点太少的话，我们得从两边借一个节点挪进去
                     if (i > 0 && p.keySize > t - 1) {
                         // 左边的 node children 多，就借一个
-                        shift2RightChild(x, i - 1, p, y);
+                        shift2RightChild(x, i-1, p, y);
                     } else if (i < x.keySize && z.keySize > t - 1) {
                         // 右边的 node children 多，就借一个
                         shift2LeftChild(x, i, y, z);
@@ -255,11 +261,13 @@ public class BTree {
         for (int j = 0; j < z.keySize; j++) {
             z.keys[j] = z.keys[j + 1];
         }
+        z.keys[z.keySize] = 0;
         if (!z.leaf) {
             y.children[y.keySize] = z.children[0];
             for (int j = 0; j <= z.keySize; j++) {
                 z.children[j] = z.children[j + 1];
             }
+            z.children[z.keySize + 1] = null;
         }
         // disk-write x
         // disk-write y
@@ -278,8 +286,10 @@ public class BTree {
                 z.children[j + 1] = z.children[j];
             }
             z.children[0] = y.children[y.keySize];
+            y.children[y.keySize] = null;
         }
         y.keySize -= 1;
+        y.keys[y.keySize] = 0;
         // disk-write x
         // disk-write y
         // disk-write z
@@ -324,7 +334,7 @@ public class BTree {
             x = x.children[i];
             i = x.keySize;
         }
-        return x.keys[z.keySize - 1];
+        return x.keys[x.keySize - 1];
     }
 
     private int searchSuccessor(Node z) {
