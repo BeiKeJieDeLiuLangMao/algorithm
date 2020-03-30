@@ -16,7 +16,6 @@ public class BTree {
 
     /**
      * 搜索 B 树和搜索二叉树很像，但是它没法做到 2 路选择，而是一个多路选择
-     *
      * 它将返回节点 y 和与 key 相等的下标 i，即 y.keys[i] = key, 如果 key 不存在的话，则返回 null
      */
     private SearchResult search(Node x, int key) {
@@ -67,7 +66,7 @@ public class BTree {
             x.keys[j + 1] = x.keys[j];
         }
         x.keys[i] = y.keys[t - 1];
-        y.keys[t-1] = 0;
+        y.keys[t - 1] = 0;
         x.keySize = x.keySize + 1;
         // write-disk x
         // write-disk y
@@ -235,13 +234,13 @@ public class BTree {
                     // 如果 k 节点所处的 node 节点太少的话，我们得从两边借一个节点挪进去
                     if (i > 0 && p.keySize > t - 1) {
                         // 左边的 node children 多，就借一个
-                        shift2RightChild(x, i-1, p, y);
+                        shift2RightChild(x, i - 1, p, y);
                     } else if (i < x.keySize && z.keySize > t - 1) {
                         // 右边的 node children 多，就借一个
                         shift2LeftChild(x, i, y, z);
                     } else if (i > 0) {
                         // 左右节点的子节点都不够，如果有左节点，则左节点和 y 合并
-                        mergeChild(x, i-1, p, y);
+                        mergeChild(x, i - 1, p, y);
                         y = p;
                     } else {
                         // 左右节点的子节点都不够，如果有右节点，则右节点和 y 合并
