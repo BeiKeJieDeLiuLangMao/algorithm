@@ -252,43 +252,43 @@ public class BTree {
         }
     }
 
-    private void shift2LeftChild(Node x, int i, Node y, Node z) {
-        y.keys[y.keySize] = x.keys[i];
-        y.keySize += 1;
-        x.keys[i] = z.keys[0];
-        z.keySize -= 1;
-        for (int j = 0; j < z.keySize; j++) {
-            z.keys[j] = z.keys[j + 1];
+    private void shift2LeftChild(Node x, int i, Node left, Node right) {
+        left.keys[left.keySize] = x.keys[i];
+        left.keySize += 1;
+        x.keys[i] = right.keys[0];
+        right.keySize -= 1;
+        for (int j = 0; j < right.keySize; j++) {
+            right.keys[j] = right.keys[j + 1];
         }
-        z.keys[z.keySize] = 0;
-        if (!z.leaf) {
-            y.children[y.keySize] = z.children[0];
-            for (int j = 0; j <= z.keySize; j++) {
-                z.children[j] = z.children[j + 1];
+        right.keys[right.keySize] = 0;
+        if (!right.leaf) {
+            left.children[left.keySize] = right.children[0];
+            for (int j = 0; j <= right.keySize; j++) {
+                right.children[j] = right.children[j + 1];
             }
-            z.children[z.keySize + 1] = null;
+            right.children[right.keySize + 1] = null;
         }
         // disk-write x
         // disk-write y
         // disk-write z
     }
 
-    private void shift2RightChild(Node x, int i, Node y, Node z) {
-        z.keySize += 1;
-        for (int j = z.keySize - 1; j > 0; j--) {
-            z.keys[j] = z.keys[j - 1];
+    private void shift2RightChild(Node x, int i, Node left, Node right) {
+        right.keySize += 1;
+        for (int j = right.keySize - 1; j > 0; j--) {
+            right.keys[j] = right.keys[j - 1];
         }
-        z.keys[0] = x.keys[i];
-        x.keys[i] = y.keys[y.keySize - 1];
-        if (!z.leaf) {
-            for (int j = z.keySize - 1; j >= 0; j--) {
-                z.children[j + 1] = z.children[j];
+        right.keys[0] = x.keys[i];
+        x.keys[i] = left.keys[left.keySize - 1];
+        if (!right.leaf) {
+            for (int j = right.keySize - 1; j >= 0; j--) {
+                right.children[j + 1] = right.children[j];
             }
-            z.children[0] = y.children[y.keySize];
-            y.children[y.keySize] = null;
+            right.children[0] = left.children[left.keySize];
+            left.children[left.keySize] = null;
         }
-        y.keySize -= 1;
-        y.keys[y.keySize] = 0;
+        left.keySize -= 1;
+        left.keys[left.keySize] = 0;
         // disk-write x
         // disk-write y
         // disk-write z
