@@ -57,7 +57,7 @@ public class Prim {
         tree.add(graphLines.get(0).pNames[0]);
         while (tree.size() < 9) {
             for (Line line: graphLines) {
-                // 判断是否一个该边一端在树内一端在树外
+                // 判断一个边是否一端在树内一端在树外
                 if ((tree.contains(line.pNames[0]) && !tree.contains(line.pNames[1]))
                 || ((tree.contains(line.pNames[1]) && !tree.contains(line.pNames[0])))) {
                     tree.add(line.pNames[0]);
