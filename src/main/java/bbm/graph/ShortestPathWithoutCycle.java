@@ -8,6 +8,8 @@ import static bbm.graph.ShortestPathWithoutCycle.Color.GRAY;
 import static bbm.graph.ShortestPathWithoutCycle.Color.WHITE;
 
 /**
+ * 解决无环图单源最短路径
+ *
  * 在无环图中，我们可以按照拓扑排序的节点顺序，依次处理各个节点的所有边，当处理完最后一个节点时，整个图中的所有节点的最短路径就确定下来了
  *
  * 由于拓扑排序的性质，当在图中不存在从 B 到 A 的路径，则 A 在序列中排在 B 的前面，每当我们按照拓扑排序处理一个节点的所有边时，就会有至少一个
