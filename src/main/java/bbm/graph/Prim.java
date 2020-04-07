@@ -54,9 +54,10 @@ public class Prim {
         graphLines.add(new Line("e", "f", 10));
         graphLines.sort(Comparator.comparingInt(o -> o.w));
         Set<String> tree = new HashSet<>();
-        tree.add("a");
+        tree.add(graphLines.get(0).pNames[0]);
         while (tree.size() < 9) {
             for (Line line: graphLines) {
+                // 判断是否一个该边一端在树内一端在树外
                 if ((tree.contains(line.pNames[0]) && !tree.contains(line.pNames[1]))
                 || ((tree.contains(line.pNames[1]) && !tree.contains(line.pNames[0])))) {
                     tree.add(line.pNames[0]);
@@ -65,6 +66,7 @@ public class Prim {
                     graphLines.remove(line);
                     break;
                 } else if (tree.contains(line.pNames[0])) {
+                    // 都在树内
                     graphLines.remove(line);
                     break;
                 }
