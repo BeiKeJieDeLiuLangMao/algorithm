@@ -16,7 +16,6 @@ class StringMatcherTest {
 
     @Test
     public void testNative() {
-        StringMatcher stringMatcher = new NativeStringMatcher();
         List<Character> chars = Arrays.asList('1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'x');
         for (int loop = 0; loop < 10000; loop++) {
             StringBuilder stringBuilder = new StringBuilder();
@@ -35,6 +34,7 @@ class StringMatcherTest {
             while (matcher.find()) {
                 result.add(matcher.start());
             }
+            StringMatcher stringMatcher = new StateMachineStringMatcher(patternString);
             List<Integer> myResult = stringMatcher.match(string, patternString);
             try {
                 Assertions.assertEquals(result.size(), myResult.size());
