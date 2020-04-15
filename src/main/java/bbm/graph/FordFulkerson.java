@@ -11,7 +11,7 @@ import java.util.Set;
 import java.util.concurrent.LinkedBlockingQueue;
 
 /**
- * 解决最大流问题
+ * 解决最大流问题 FordFulkerson EdmondsKarp
  *
  * 算法的思想是：
  * 1. 用一条反向的边来描述消耗掉的流容量，即 a->b (14) 消耗掉 8 的流量之后，变成两条边 a->b (6) 和 b->a (8), 通过这种反向边表示的方法
