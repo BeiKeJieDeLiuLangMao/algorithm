@@ -4,6 +4,10 @@ import java.util.LinkedList;
 import java.util.List;
 
 /**
+ * 遍历字符串，以每一位作为开头检查是否和目标字符串相同
+ *
+ * 时间复杂度：O((n-m+1)*m)
+ *
  * @author bbm
  */
 public class NativeStringMatcher implements StringMatcher {

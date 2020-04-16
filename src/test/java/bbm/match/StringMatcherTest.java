@@ -42,7 +42,9 @@ class StringMatcherTest {
                     Assertions.assertEquals(result.get(i), myResult.get(i));
                 }
             } catch (Throwable e) {
-                e.printStackTrace();
+                System.out.println("Pattern:" + patternString);
+                System.out.println("String:" + string);
+                throw e;
             }
         }
     }
