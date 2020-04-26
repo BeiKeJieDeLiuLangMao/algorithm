@@ -6,7 +6,6 @@ import java.util.List;
 import java.util.Random;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import org.checkerframework.checker.units.qual.K;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -35,7 +34,7 @@ class StringMatcherTest {
             while (matcher.find()) {
                 result.add(matcher.start());
             }
-            StringMatcher stringMatcher = new KMP();
+            StringMatcher stringMatcher = new StateMachineStringMatcher(patternString);
             List<Integer> myResult = stringMatcher.match(string, patternString);
             try {
                 Assertions.assertEquals(result.size(), myResult.size());
@@ -48,11 +47,5 @@ class StringMatcherTest {
                 throw e;
             }
         }
-    }
-
-    @Test
-    public void test() {
-        KMP kmp = new KMP();
-        kmp.match("bbc abcdab abcdabcdabde", "abcdabd");
     }
 }
