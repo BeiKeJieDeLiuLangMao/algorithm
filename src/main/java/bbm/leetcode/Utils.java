@@ -16,6 +16,17 @@ public class Utils {
         System.out.println();
     }
 
+    public static void print(int[][] array) {
+        if (array != null) {
+            Arrays.stream(array).forEach(t -> {
+                System.out.print("[");
+                Arrays.stream(t).forEach(item -> System.out.print(item + " "));
+                System.out.print("] ");
+            });
+        }
+        System.out.println();
+    }
+
     public static void print(char[] array) {
         if (array != null) {
             for (char c : array) {
