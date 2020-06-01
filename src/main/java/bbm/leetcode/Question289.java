@@ -49,11 +49,11 @@ import static bbm.leetcode.Utils.print;
  */
 public class Question289 {
     public static void main(String[] args) {
-        int[][] data = new int[][]{
-                new int[]{0, 1, 0},
-                new int[]{0, 0, 1},
-                new int[]{1, 1, 1},
-                new int[]{0, 0, 0}};
+        int[][] data = new int[][] {
+            new int[] {0, 1, 0},
+            new int[] {0, 0, 1},
+            new int[] {1, 1, 1},
+            new int[] {0, 0, 0}};
         new Question289().gameOfLife2(data);
         print(data);
     }

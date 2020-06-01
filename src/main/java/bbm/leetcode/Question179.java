@@ -23,7 +23,7 @@ import java.util.Arrays;
  */
 public class Question179 {
     public static void main(String[] args) {
-        System.out.println(new Question179().largestNumber(new int[]{10, 2}));
+        System.out.println(new Question179().largestNumber(new int[] {10, 2}));
     }
 
     public String largestNumber(int[] nums) {

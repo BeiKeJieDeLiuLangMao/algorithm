@@ -27,7 +27,7 @@ import static bbm.leetcode.Utils.print;
  */
 public class Question56 {
     public static void main(String[] args) {
-        print(new Question56().merge2(new int[][]{new int[]{11, 12}, new int[]{5, 10}, new int[]{1, 2}, new int[]{2, 3}}));
+        print(new Question56().merge2(new int[][] {new int[] {11, 12}, new int[] {5, 10}, new int[] {1, 2}, new int[] {2, 3}}));
     }
 
     public int[][] merge(int[][] intervals) {

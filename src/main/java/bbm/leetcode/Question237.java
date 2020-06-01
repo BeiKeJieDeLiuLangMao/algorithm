@@ -24,7 +24,7 @@ import static bbm.leetcode.Utils.print;
  */
 public class Question237 {
     public static void main(String[] args) {
-        ListNode head = ListNode.build(new Integer[]{4, 5, 1, 9});
+        ListNode head = ListNode.build(new Integer[] {4, 5, 1, 9});
         ListNode listNode = head.next;
         new Question237().deleteNode(listNode);
         print(head);

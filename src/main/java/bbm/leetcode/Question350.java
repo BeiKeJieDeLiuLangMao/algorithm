@@ -33,7 +33,7 @@ import static bbm.leetcode.Utils.print;
  */
 public class Question350 {
     public static void main(String[] args) {
-        print(new Question350().intersect2(new int[]{-2147483648, 1, 2, 3}, new int[]{1, -2147483648, -2147483648}));
+        print(new Question350().intersect2(new int[] {-2147483648, 1, 2, 3}, new int[] {1, -2147483648, -2147483648}));
     }
 
     /**

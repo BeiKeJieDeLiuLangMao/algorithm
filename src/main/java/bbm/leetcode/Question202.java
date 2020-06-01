@@ -42,7 +42,8 @@ public class Question202 {
                 int temp = n % 10;
                 sum += (int) Math.pow(temp, 2);
                 n = n / 10;
-            } while (n != 0);
+            }
+            while (n != 0);
             n = sum;
             if (exist.contains(n)) {
                 return false;

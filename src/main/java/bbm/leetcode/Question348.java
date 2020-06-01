@@ -82,11 +82,11 @@ public class Question348 {
         private final int[] rowTable2;
         private final int[] colTable1;
         private final int[] colTable2;
+        private final int n;
         private int upCrossTable1;
         private int upCrossTable2;
         private int downCrossTable1;
         private int downCrossTable2;
-        private final int n;
 
         /**
          * Initialize your data structure here.

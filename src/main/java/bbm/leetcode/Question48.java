@@ -52,11 +52,11 @@ import static bbm.leetcode.Utils.print;
  */
 public class Question48 {
     public static void main(String[] args) {
-        int[][] data = new int[][]{
-                new int[]{5, 1, 9, 11},
-                new int[]{2, 4, 8, 10},
-                new int[]{13, 3, 6, 7},
-                new int[]{15, 14, 12, 16}
+        int[][] data = new int[][] {
+            new int[] {5, 1, 9, 11},
+            new int[] {2, 4, 8, 10},
+            new int[] {13, 3, 6, 7},
+            new int[] {15, 14, 12, 16}
         };
         new Question48().rotate(data);
         print(data);

@@ -31,7 +31,7 @@ import static bbm.leetcode.Utils.print;
  */
 public class Question15 {
     public static void main(String[] args) {
-        print(new Question15().threeSum(new int[]{-4, -2, -2, -2, 0, 1, 2, 2, 2, 3, 3, 4, 4, 6, 6}));
+        print(new Question15().threeSum(new int[] {-4, -2, -2, -2, 0, 1, 2, 2, 2, 3, 3, 4, 4, 6, 6}));
     }
 
     public List<List<Integer>> threeSum(int[] nums) {

@@ -33,7 +33,7 @@ import static bbm.leetcode.Utils.print;
  */
 public class Question103 {
     public static void main(String[] args) {
-        print(new Question103().zigzagLevelOrder(TreeNode.build(new Integer[]{3, 9, 20, null, null, 15, 7})));
+        print(new Question103().zigzagLevelOrder(TreeNode.build(new Integer[] {3, 9, 20, null, null, 15, 7})));
     }
 
     public List<List<Integer>> zigzagLevelOrder(TreeNode root) {

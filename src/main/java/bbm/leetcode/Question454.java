@@ -32,7 +32,7 @@ import java.util.Map;
  */
 public class Question454 {
     public static void main(String[] args) {
-        System.out.println(new Question454().fourSumCount(new int[]{-1, -1}, new int[]{-1, 1}, new int[]{-1, 1}, new int[]{-1, 1}));
+        System.out.println(new Question454().fourSumCount(new int[] {-1, -1}, new int[] {-1, 1}, new int[] {-1, 1}, new int[] {-1, 1}));
     }
 
     public int fourSumCount(int[] A, int[] B, int[] C, int[] D) {

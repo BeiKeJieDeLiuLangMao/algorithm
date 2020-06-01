@@ -29,8 +29,8 @@ import static bbm.leetcode.Utils.print;
  */
 public class Question88 {
     public static void main(String[] args) {
-        int[] nums = new int[]{0};
-        new Question88().merge(nums, 0, new int[]{1}, 1);
+        int[] nums = new int[] {0};
+        new Question88().merge(nums, 0, new int[] {1}, 1);
         print(nums);
     }
 

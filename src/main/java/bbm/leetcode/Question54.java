@@ -36,10 +36,10 @@ import static bbm.leetcode.Utils.print;
 public class Question54 {
 
     public static void main(String[] args) {
-        print(new Question54().spiralOrder(new int[][]{
-                new int[]{1, 2, 3, 4},
-                new int[]{5, 6, 7, 8},
-                new int[]{9, 10, 11, 12},
+        print(new Question54().spiralOrder(new int[][] {
+            new int[] {1, 2, 3, 4},
+            new int[] {5, 6, 7, 8},
+            new int[] {9, 10, 11, 12},
         }));
     }
 

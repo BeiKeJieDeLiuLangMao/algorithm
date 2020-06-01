@@ -18,7 +18,7 @@ package bbm.leetcode;
  */
 public class Question11 {
     public static void main(String[] args) {
-        System.out.println(new Question11().maxArea(new int[]{2, 3, 4, 5, 18, 17, 6}));
+        System.out.println(new Question11().maxArea(new int[] {2, 3, 4, 5, 18, 17, 6}));
     }
 
     public int maxArea(int[] height) {

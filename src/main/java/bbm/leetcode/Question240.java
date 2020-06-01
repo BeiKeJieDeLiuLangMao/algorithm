@@ -28,12 +28,12 @@ package bbm.leetcode;
  */
 public class Question240 {
     public static void main(String[] args) {
-        System.out.println(new Question240().searchMatrix(new int[][]{
-                new int[]{1, 3, 5, 7, 9},
-                new int[]{2, 4, 6, 8, 10},
-                new int[]{11, 13, 15, 17, 19},
-                new int[]{12, 14, 16, 18, 20},
-                new int[]{21, 22, 23, 24, 25}
+        System.out.println(new Question240().searchMatrix(new int[][] {
+            new int[] {1, 3, 5, 7, 9},
+            new int[] {2, 4, 6, 8, 10},
+            new int[] {11, 13, 15, 17, 19},
+            new int[] {12, 14, 16, 18, 20},
+            new int[] {21, 22, 23, 24, 25}
 
         }, 13));
     }
@@ -46,8 +46,8 @@ public class Question240 {
     }
 
     public boolean binarySearchIn2Way(int[][] matrix, int target,
-                                      int rowStart, int rowEnd,
-                                      int colStart, int colEnd) {
+        int rowStart, int rowEnd,
+        int colStart, int colEnd) {
         while (rowStart <= rowEnd && colStart <= colEnd) {
             boolean shift = false;
             for (int row = rowStart; row <= rowEnd; row++) {
@@ -100,10 +100,10 @@ public class Question240 {
                 return true;
             } else if (midNumber > target) {
                 return binarySearchIn2Way(matrix, target, rowStart, rowEnd, colStart, colMid - 1) ||
-                        binarySearchIn2Way(matrix, target, rowStart, rowMid - 1, colStart, colEnd);
+                    binarySearchIn2Way(matrix, target, rowStart, rowMid - 1, colStart, colEnd);
             } else {
                 return binarySearchIn2Way(matrix, target, rowStart, rowEnd, colMid + 1, colEnd) ||
-                        binarySearchIn2Way(matrix, target, rowMid + 1, rowEnd, colStart, colEnd);
+                    binarySearchIn2Way(matrix, target, rowMid + 1, rowEnd, colStart, colEnd);
             }
         }
         return false;

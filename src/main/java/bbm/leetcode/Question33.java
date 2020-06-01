@@ -29,7 +29,7 @@ package bbm.leetcode;
 public class Question33 {
 
     public static void main(String[] args) {
-        System.out.println(new Question33().search(new int[]{5, 1, 2, 3, 4}, 1));
+        System.out.println(new Question33().search(new int[] {5, 1, 2, 3, 4}, 1));
     }
 
     public int search(int[] nums, int target) {

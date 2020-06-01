@@ -26,7 +26,7 @@ import static bbm.leetcode.Utils.print;
  */
 public class Question19 {
     public static void main(String[] args) {
-        print(new Question19().removeNthFromEnd(ListNode.build(new Integer[]{1, 2, 3, 4, 5}), 2));
+        print(new Question19().removeNthFromEnd(ListNode.build(new Integer[] {1, 2, 3, 4, 5}), 2));
     }
 
     public ListNode removeNthFromEnd(ListNode head, int n) {

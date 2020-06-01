@@ -22,7 +22,7 @@ import static bbm.leetcode.Utils.print;
  */
 public class Question148 {
     public static void main(String[] args) {
-        print(new Question148().sortList(ListNode.build(new Integer[]{4, 2, 1, 3})));
+        print(new Question148().sortList(ListNode.build(new Integer[] {4, 2, 1, 3})));
     }
 
     public ListNode sortList(ListNode head) {

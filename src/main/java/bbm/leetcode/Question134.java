@@ -52,7 +52,7 @@ package bbm.leetcode;
  */
 public class Question134 {
     public static void main(String[] args) {
-        System.out.println(new Question134().canCompleteCircuit2(new int[]{1, 2, 3, 4, 5}, new int[]{3, 4, 5, 1, 2}));
+        System.out.println(new Question134().canCompleteCircuit2(new int[] {1, 2, 3, 4, 5}, new int[] {3, 4, 5, 1, 2}));
     }
 
     public int canCompleteCircuit(int[] gas, int[] cost) {

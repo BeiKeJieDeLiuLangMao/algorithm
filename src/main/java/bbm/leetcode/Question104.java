@@ -30,7 +30,7 @@ import static bbm.leetcode.TreeNode.build;
  */
 public class Question104 {
     public static void main(String[] args) {
-        System.out.println(new Question104().maxDepth2(build(new Integer[]{3, 9, 20, null, null, 15, 7})));
+        System.out.println(new Question104().maxDepth2(build(new Integer[] {3, 9, 20, null, null, 15, 7})));
     }
 
     public int maxDepth(TreeNode root) {

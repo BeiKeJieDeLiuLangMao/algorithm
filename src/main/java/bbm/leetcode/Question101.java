@@ -33,7 +33,7 @@ import static bbm.leetcode.TreeNode.build;
 public class Question101 {
 
     public static void main(String[] args) {
-        System.out.println(new Question101().isSymmetric(build(new Integer[]{1, 2, 3})));
+        System.out.println(new Question101().isSymmetric(build(new Integer[] {1, 2, 3})));
     }
 
     public boolean isSymmetric(TreeNode root) {

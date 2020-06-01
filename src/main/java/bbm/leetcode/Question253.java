@@ -23,7 +23,7 @@ import java.util.Comparator;
  */
 public class Question253 {
     public static void main(String[] args) {
-        System.out.println(new Question253().minMeetingRooms(new int[][]{new int[]{0, 30}, new int[]{5, 10}, new int[]{15, 20}}));
+        System.out.println(new Question253().minMeetingRooms(new int[][] {new int[] {0, 30}, new int[] {5, 10}, new int[] {15, 20}}));
     }
 
     public int minMeetingRooms(int[][] intervals) {

@@ -20,7 +20,7 @@ package bbm.leetcode;
  */
 public class Question198 {
     public static void main(String[] args) {
-        System.out.println(new Question198().rob(new int[]{6, 3, 10, 8, 2, 10, 3, 5, 10, 5, 3}));
+        System.out.println(new Question198().rob(new int[] {6, 3, 10, 8, 2, 10, 3, 5, 10, 5, 3}));
     }
 
     public int rob(int[] nums) {

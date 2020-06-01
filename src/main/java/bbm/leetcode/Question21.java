@@ -18,7 +18,7 @@ import static bbm.leetcode.Utils.print;
  */
 public class Question21 {
     public static void main(String[] args) {
-        print(new Question21().mergeTwoLists(ListNode.build(new Integer[]{1, 2, 4}), ListNode.build(new Integer[]{1, 3, 4})));
+        print(new Question21().mergeTwoLists(ListNode.build(new Integer[] {1, 2, 4}), ListNode.build(new Integer[] {1, 3, 4})));
     }
 
     public ListNode mergeTwoLists(ListNode l1, ListNode l2) {

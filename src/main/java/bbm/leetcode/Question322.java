@@ -27,7 +27,7 @@ package bbm.leetcode;
  */
 public class Question322 {
     public static void main(String[] args) {
-        System.out.println(new Question322().coinChange(new int[]{186, 419, 83, 408}, 6249));
+        System.out.println(new Question322().coinChange(new int[] {186, 419, 83, 408}, 6249));
     }
 
     public int coinChange(int[] coins, int amount) {

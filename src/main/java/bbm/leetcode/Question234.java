@@ -22,7 +22,7 @@ import java.util.ArrayList;
  */
 public class Question234 {
     public static void main(String[] args) {
-        System.out.println(new Question234().isPalindrome2(ListNode.build(new Integer[]{1, 0, 0})));
+        System.out.println(new Question234().isPalindrome2(ListNode.build(new Integer[] {1, 0, 0})));
     }
 
     public boolean isPalindrome(ListNode head) {

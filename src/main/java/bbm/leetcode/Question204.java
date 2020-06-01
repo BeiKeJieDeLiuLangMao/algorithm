@@ -16,7 +16,7 @@ import java.util.Arrays;
  */
 public class Question204 {
 
-    private static boolean[] table = new boolean[]{false, false};
+    private static boolean[] table = new boolean[] {false, false};
     private static int timeOf2 = 2;
     private static int timeOf3 = 3;
     private static int timeOf5 = 5;

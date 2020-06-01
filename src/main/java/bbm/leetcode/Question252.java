@@ -25,7 +25,7 @@ import java.util.concurrent.atomic.AtomicInteger;
  */
 public class Question252 {
     public static void main(String[] args) {
-        System.out.println(new Question252().canAttendMeetings(new int[][]{new int[]{19, 20}, new int[]{1, 10}, new int[]{5, 14}}));
+        System.out.println(new Question252().canAttendMeetings(new int[][] {new int[] {19, 20}, new int[] {1, 10}, new int[] {5, 14}}));
     }
 
     public boolean canAttendMeetings(int[][] intervals) {

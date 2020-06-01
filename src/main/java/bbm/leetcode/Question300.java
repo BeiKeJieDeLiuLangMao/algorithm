@@ -22,7 +22,7 @@ package bbm.leetcode;
  */
 public class Question300 {
     public static void main(String[] args) {
-        System.out.println(new Question300().lengthOfLIS2(new int[]{10, 9, 2, 5, 3, 4}));
+        System.out.println(new Question300().lengthOfLIS2(new int[] {10, 9, 2, 5, 3, 4}));
     }
 
     public int lengthOfLIS(int[] nums) {

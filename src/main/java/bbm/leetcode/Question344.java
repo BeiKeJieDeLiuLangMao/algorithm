@@ -28,7 +28,7 @@ import static bbm.leetcode.Utils.print;
  */
 public class Question344 {
     public static void main(String[] args) {
-        char[] param = new char[]{'h', 'e', 'l', 'l', 'o'};
+        char[] param = new char[] {'h', 'e', 'l', 'l', 'o'};
         new Question344().reverseString(param);
         print(param);
     }

@@ -26,7 +26,7 @@ import java.util.PriorityQueue;
 public class Question215 {
 
     public static void main(String[] args) {
-        System.out.println(new Question215().findKthLargest(new int[]{3, 3, 3, 3, 4, 3, 3, 3, 3}, 1));
+        System.out.println(new Question215().findKthLargest(new int[] {3, 3, 3, 3, 4, 3, 3, 3, 3}, 1));
     }
 
     public int findKthLargest(int[] nums, int k) {

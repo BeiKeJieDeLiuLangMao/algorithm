@@ -22,7 +22,7 @@ import static bbm.leetcode.Utils.print;
  */
 public class Question283 {
     public static void main(String[] args) {
-        int[] param = new int[]{1, 0, 1};
+        int[] param = new int[] {1, 0, 1};
         new Question283().moveZeroes2(param);
         print(param);
     }

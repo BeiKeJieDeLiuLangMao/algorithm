@@ -1,6 +1,10 @@
 package bbm.leetcode;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Set;
 
 import static bbm.leetcode.Utils.print;
 
@@ -28,7 +32,7 @@ import static bbm.leetcode.Utils.print;
  */
 public class Question46 {
     public static void main(String[] args) {
-        print(new Question46().permute(new int[]{1, 2, 3}));
+        print(new Question46().permute(new int[] {1, 2, 3}));
     }
 
     public List<List<Integer>> permute(int[] nums) {
@@ -39,7 +43,8 @@ public class Question46 {
         return result;
     }
 
-    private void dfs(int[] nums, int length, int depth, List<Integer> path, Set<Integer> used, List<List<Integer>> result) {
+    private void dfs(int[] nums, int length, int depth, List<Integer> path, Set<Integer> used,
+        List<List<Integer>> result) {
         if (depth == length) {
             result.add(new ArrayList<>(path));
             return;

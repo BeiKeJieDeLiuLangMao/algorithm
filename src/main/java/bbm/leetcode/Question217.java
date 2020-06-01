@@ -28,7 +28,7 @@ package bbm.leetcode;
  */
 public class Question217 {
     public static void main(String[] args) {
-        System.out.println(new Question217().containsDuplicate(new int[]{1, 2, 3, 4}));
+        System.out.println(new Question217().containsDuplicate(new int[] {1, 2, 3, 4}));
     }
 
     public boolean containsDuplicate(int[] nums) {

@@ -24,7 +24,7 @@ package bbm.leetcode;
  */
 public class Question136 {
     public static void main(String[] args) {
-        System.out.println(new Question136().singleNumber(new int[]{4, 1, 2, 1, 2}));
+        System.out.println(new Question136().singleNumber(new int[] {4, 1, 2, 1, 2}));
     }
 
     public int singleNumber(int[] nums) {

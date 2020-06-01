@@ -34,7 +34,7 @@ import static bbm.leetcode.Utils.print;
 public class Question189 {
 
     public static void main(String[] args) {
-        int[] nums = new int[]{1, 2, 3, 4, 5, 6};
+        int[] nums = new int[] {1, 2, 3, 4, 5, 6};
         new Question189().rotate(nums, 2);
         print(nums);
     }

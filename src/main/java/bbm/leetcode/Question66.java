@@ -28,7 +28,7 @@ import static bbm.leetcode.Utils.print;
  */
 public class Question66 {
     public static void main(String[] args) {
-        print(new Question66().plusOne(new int[]{1, 2, 3, 4}));
+        print(new Question66().plusOne(new int[] {1, 2, 3, 4}));
     }
 
     public int[] plusOne(int[] digits) {

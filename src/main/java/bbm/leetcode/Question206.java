@@ -20,7 +20,7 @@ import static bbm.leetcode.Utils.print;
 public class Question206 {
 
     public static void main(String[] args) {
-        print(new Question206().reverseList(build(new Integer[]{1, 2, 3, 4, 5})));
+        print(new Question206().reverseList(build(new Integer[] {1, 2, 3, 4, 5})));
     }
 
     public ListNode reverseList(ListNode head) {

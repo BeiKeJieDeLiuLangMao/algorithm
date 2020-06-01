@@ -24,7 +24,7 @@ package bbm.leetcode;
  */
 public class Question122 {
     public static void main(String[] args) {
-        System.out.println(new Question122().maxProfit(new int[]{1, 2, 3, 4}));
+        System.out.println(new Question122().maxProfit(new int[] {1, 2, 3, 4}));
     }
 
     public int maxProfit(int[] prices) {

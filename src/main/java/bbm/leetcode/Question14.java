@@ -18,7 +18,7 @@ package bbm.leetcode;
  */
 public class Question14 {
     public static void main(String[] args) {
-        System.out.println(new Question14().longestCommonPrefix(new String[]{"flower", "flow", "flight"}));
+        System.out.println(new Question14().longestCommonPrefix(new String[] {"flower", "flow", "flight"}));
     }
 
     public String longestCommonPrefix(String[] strings) {

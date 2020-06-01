@@ -27,7 +27,7 @@ import static bbm.leetcode.TreeNode.print;
  */
 public class Question108 {
     public static void main(String[] args) {
-        print(new Question108().sortedArrayToBST(new int[]{-10, -3, 0, 5, 9}));
+        print(new Question108().sortedArrayToBST(new int[] {-10, -3, 0, 5, 9}));
     }
 
     public TreeNode sortedArrayToBST(int[] nums) {

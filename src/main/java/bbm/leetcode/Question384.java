@@ -33,7 +33,7 @@ import static bbm.leetcode.Utils.print;
  */
 public class Question384 {
     public static void main(String[] args) {
-        Solution solution = new Solution(new int[]{-9, 10, 100, 20});
+        Solution solution = new Solution(new int[] {-9, 10, 100, 20});
         print(solution.reset());
         print(solution.shuffle());
         print(solution.shuffle());
@@ -44,8 +44,8 @@ public class Question384 {
 
     static class Solution {
 
-        Random random = new Random(System.currentTimeMillis());
         private final int[] original;
+        Random random = new Random(System.currentTimeMillis());
 
         public Solution(int[] nums) {
             this.original = nums;

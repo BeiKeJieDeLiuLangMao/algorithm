@@ -19,8 +19,8 @@ import static bbm.leetcode.ListNode.find;
  */
 public class Question160 {
     public static void main(String[] args) {
-        ListNode a = ListNode.build(new Integer[]{4, 1, 8, 4, 5});
-        ListNode b = ListNode.build(new Integer[]{5, 0, 1});
+        ListNode a = ListNode.build(new Integer[] {4, 1, 8, 4, 5});
+        ListNode b = ListNode.build(new Integer[] {5, 0, 1});
         ListNode bEnd = find(b, 2);
         bEnd.next = find(a, 2);
         System.out.println(new Question160().getIntersectionNode(a, b).val);

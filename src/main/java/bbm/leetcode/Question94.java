@@ -1,6 +1,10 @@
 package bbm.leetcode;
 
-import java.util.*;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Set;
+import java.util.Stack;
 
 import static bbm.leetcode.Utils.print;
 
@@ -28,7 +32,7 @@ import static bbm.leetcode.Utils.print;
 public class Question94 {
 
     public static void main(String[] args) {
-        print(new Question94().inorderTraversal2(TreeNode.build(new Integer[]{1, null, 2, null, null, 3, 4})));
+        print(new Question94().inorderTraversal2(TreeNode.build(new Integer[] {1, null, 2, null, null, 3, 4})));
     }
 
     public List<Integer> inorderTraversal(TreeNode root) {
