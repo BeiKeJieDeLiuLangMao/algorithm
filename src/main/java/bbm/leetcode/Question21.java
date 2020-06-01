@@ -4,12 +4,12 @@ import static bbm.leetcode.Utils.print;
 
 /**
  * 将两个升序链表合并为一个新的升序链表并返回。新链表是通过拼接给定的两个链表的所有节点组成的。 
- *
+ * <p>
  * 示例：
- *
+ * <p>
  * 输入：1->2->4, 1->3->4
  * 输出：1->1->2->3->4->4
- *
+ * <p>
  * 来源：力扣（LeetCode）
  * 链接：https://leetcode-cn.com/problems/merge-two-sorted-lists
  *
@@ -17,6 +17,10 @@ import static bbm.leetcode.Utils.print;
  * @date 2020/5/20
  */
 public class Question21 {
+    public static void main(String[] args) {
+        print(new Question21().mergeTwoLists(ListNode.build(new Integer[]{1, 2, 4}), ListNode.build(new Integer[]{1, 3, 4})));
+    }
+
     public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
         if (l1 == null) {
             return l2;
@@ -50,9 +54,5 @@ public class Question21 {
             node.next = l2;
         }
         return head;
-    }
-
-    public static void main(String[] args) {
-        print(new Question21().mergeTwoLists(ListNode.build(new Integer[] {1, 2, 4}), ListNode.build(new Integer[] {1, 3, 4})));
     }
 }

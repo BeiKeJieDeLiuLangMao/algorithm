@@ -5,17 +5,17 @@ import java.util.Map;
 
 /**
  * 运用你所掌握的数据结构，设计和实现一个  LRU (最近最少使用) 缓存机制。它应该支持以下操作： 获取数据 get 和 写入数据 put 。
- *
+ * <p>
  * 获取数据 get(key) - 如果关键字 (key) 存在于缓存中，则获取关键字的值（总是正数），否则返回 -1。
  * 写入数据 put(key, value) - 如果关键字已经存在，则变更其数据值；如果关键字不存在，则插入该组「关键字/值」。当缓存容量达到上限时，它应该在写入新数据之前删除最久未使用的数据值，从而为新的数据值留出空间。
- *
+ * <p>
  * 进阶:
- *
+ * <p>
  * 你是否可以在 O(1) 时间复杂度内完成这两种操作？
- *
+ * <p>
  * 示例:
  * LRUCache cache = new LRUCache(2);
- *
+ * <p>
  * cache.put(1,1);
  * cache.put(2,2);
  * cache.get(1); 返回  1
@@ -25,7 +25,7 @@ import java.util.Map;
  * cache.get(1); 返回 -1 (未找到)
  * cache.get(3); 返回  3
  * cache.get(4); 返回  4
- *
+ * <p>
  * 来源：力扣（LeetCode）
  * 链接：https://leetcode-cn.com/problems/lru-cache
  *
@@ -33,6 +33,24 @@ import java.util.Map;
  * @date 2020/5/29
  */
 public class Question146 {
+    public static void main(String[] args) {
+        LRUCache cache = new LRUCache(3);
+        cache.put(1, 1);
+        cache.put(2, 2);
+        cache.put(3, 3);
+        cache.put(4, 4);
+        System.out.println(cache.get(4));       // 返回  4
+        System.out.println(cache.get(3));       // 返回  3
+        System.out.println(cache.get(2));       // 返回  2
+        System.out.println(cache.get(1));       // 返回  -1
+        cache.put(5, 5);
+        System.out.println(cache.get(1));       // 返回  -1
+        System.out.println(cache.get(2));       // 返回  2
+        System.out.println(cache.get(3));       // 返回  3
+        System.out.println(cache.get(4));       // 返回 -1
+        System.out.println(cache.get(5));       // 返回  5
+    }
+
     static class LRUCache {
 
         Map<Integer, LinkedNode> map;
@@ -123,23 +141,5 @@ public class Question146 {
                 this.value = value;
             }
         }
-    }
-
-    public static void main(String[] args) {
-        LRUCache cache = new LRUCache(3);
-        cache.put(1, 1);
-        cache.put(2, 2);
-        cache.put(3, 3);
-        cache.put(4, 4);
-        System.out.println(cache.get(4));       // 返回  4
-        System.out.println(cache.get(3));       // 返回  3
-        System.out.println(cache.get(2));       // 返回  2
-        System.out.println(cache.get(1));       // 返回  -1
-        cache.put(5, 5);
-        System.out.println(cache.get(1));       // 返回  -1
-        System.out.println(cache.get(2));       // 返回  2
-        System.out.println(cache.get(3));       // 返回  3
-        System.out.println(cache.get(4));       // 返回 -1
-        System.out.println(cache.get(5));       // 返回  5
     }
 }

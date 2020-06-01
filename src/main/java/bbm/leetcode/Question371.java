@@ -2,16 +2,16 @@ package bbm.leetcode;
 
 /**
  * 不使用运算符 + 和 - ​​​​​​​，计算两整数 ​​​​​​​a 、b ​​​​​​​之和。
- *
+ * <p>
  * 示例 1:
- *
+ * <p>
  * 输入: a = 1, b = 2
  * 输出: 3
  * 示例 2:
- *
+ * <p>
  * 输入: a = -2, b = 3
  * 输出: 1
- *
+ * <p>
  * 来源：力扣（LeetCode）
  * 链接：https://leetcode-cn.com/problems/sum-of-two-integers
  *
@@ -19,6 +19,10 @@ package bbm.leetcode;
  * @date 2020/5/22
  */
 public class Question371 {
+    public static void main(String[] args) {
+        System.out.println(new Question371().getSum(1, 2));
+    }
+
     public int getSum(int a, int b) {
         int sum, carry;
         sum = a ^ b;
@@ -44,9 +48,5 @@ public class Question371 {
             return getSum(sum, carry);
         }
         return sum;
-    }
-
-    public static void main(String[] args) {
-        System.out.println(new Question371().getSum(1, 2));
     }
 }

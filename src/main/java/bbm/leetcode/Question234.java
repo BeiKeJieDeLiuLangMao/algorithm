@@ -4,16 +4,16 @@ import java.util.ArrayList;
 
 /**
  * 请判断一个链表是否为回文链表。
- *
+ * <p>
  * 示例 1:
- *
+ * <p>
  * 输入: 1->2
  * 输出: false
  * 示例 2:
- *
+ * <p>
  * 输入: 1->2->2->1
  * 输出: true
- *
+ * <p>
  * 来源：力扣（LeetCode）
  * 链接：https://leetcode-cn.com/problems/palindrome-linked-list/
  *
@@ -21,6 +21,10 @@ import java.util.ArrayList;
  * @date 2020/5/21
  */
 public class Question234 {
+    public static void main(String[] args) {
+        System.out.println(new Question234().isPalindrome2(ListNode.build(new Integer[]{1, 0, 0})));
+    }
+
     public boolean isPalindrome(ListNode head) {
         int size;
         ListNode node;
@@ -96,9 +100,5 @@ public class Question234 {
             }
         }
         return true;
-    }
-
-    public static void main(String[] args) {
-        System.out.println(new Question234().isPalindrome2(ListNode.build(new Integer[] {1, 0, 0})));
     }
 }

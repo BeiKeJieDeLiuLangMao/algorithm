@@ -4,16 +4,16 @@ import static bbm.leetcode.Utils.print;
 
 /**
  * 在 O(n log n) 时间复杂度和常数级空间复杂度下，对链表进行排序。
- *
+ * <p>
  * 示例 1:
- *
+ * <p>
  * 输入: 4->2->1->3
  * 输出: 1->2->3->4
  * 示例 2:
- *
+ * <p>
  * 输入: -1->5->3->4->0
  * 输出: -1->0->3->4->5
- *
+ * <p>
  * 来源：力扣（LeetCode）
  * 链接：https://leetcode-cn.com/problems/sort-list
  *
@@ -21,6 +21,10 @@ import static bbm.leetcode.Utils.print;
  * @date 2020/5/28
  */
 public class Question148 {
+    public static void main(String[] args) {
+        print(new Question148().sortList(ListNode.build(new Integer[]{4, 2, 1, 3})));
+    }
+
     public ListNode sortList(ListNode head) {
         if (head == null || head.next == null) {
             return head;
@@ -80,9 +84,5 @@ public class Question148 {
         } else {
             return null;
         }
-    }
-
-    public static void main(String[] args) {
-        print(new Question148().sortList(ListNode.build(new Integer[] {4, 2, 1, 3})));
     }
 }

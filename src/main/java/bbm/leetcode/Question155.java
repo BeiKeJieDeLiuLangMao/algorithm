@@ -7,6 +7,31 @@ import java.util.Arrays;
  * @date 2020/5/22
  */
 public class Question155 {
+    public static void main(String[] args) {
+        MinStack obj = new MinStack();
+        obj.push(-10);
+        obj.push(14);
+        System.out.println(obj.getMin());
+        System.out.println(obj.getMin());
+        obj.push(-20);
+        System.out.println(obj.getMin());
+
+        System.out.println(obj.getMin());
+        System.out.println(obj.top());
+        System.out.println(obj.getMin());
+        obj.pop();
+        obj.push(10);
+        obj.push(-7);
+        System.out.println(obj.getMin());
+        obj.push(-7);
+        obj.pop();
+        System.out.println(obj.top());
+        System.out.println(obj.getMin());
+        obj.pop();
+    }
+    //["MinStack","push","push","getMin","getMin","push","getMin","getMin","top","getMin","pop","push","push","getMin","push","pop","top","getMin","pop"]
+    //[[],[-10],[14],[],[],[-20],[],[],[],[],[],[10],[-7],[],[-7],[],[],[],[]]
+
     static class MinStack {
         int cap = 1024;
         int[] minData = new int[cap];
@@ -15,7 +40,9 @@ public class Question155 {
         int min;
         boolean minInited = false;
 
-        /** initialize your data structure here. */
+        /**
+         * initialize your data structure here.
+         */
         public MinStack() {
             data[0] = Integer.MIN_VALUE;
         }
@@ -43,8 +70,8 @@ public class Question155 {
             size--;
             if (size == 0) {
                 minInited = false;
-            } else if (min == minData[size]){
-                min = minData[size -1];
+            } else if (min == minData[size]) {
+                min = minData[size - 1];
             }
         }
 
@@ -55,30 +82,5 @@ public class Question155 {
         public int getMin() {
             return minData[size - 1];
         }
-    }
-    //["MinStack","push","push","getMin","getMin","push","getMin","getMin","top","getMin","pop","push","push","getMin","push","pop","top","getMin","pop"]
-    //[[],[-10],[14],[],[],[-20],[],[],[],[],[],[10],[-7],[],[-7],[],[],[],[]]
-
-    public static void main(String[] args) {
-        MinStack obj = new MinStack();
-        obj.push(-10);
-        obj.push(14);
-        System.out.println(obj.getMin());
-        System.out.println(obj.getMin());
-        obj.push(-20);
-        System.out.println(obj.getMin());
-
-        System.out.println(obj.getMin());
-        System.out.println(obj.top());
-        System.out.println(obj.getMin());
-        obj.pop();
-        obj.push(10);
-        obj.push(-7);
-        System.out.println(obj.getMin());
-        obj.push(-7);
-        obj.pop();
-        System.out.println(obj.top());
-        System.out.println(obj.getMin());
-        obj.pop();
     }
 }

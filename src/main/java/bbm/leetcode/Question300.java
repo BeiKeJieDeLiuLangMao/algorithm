@@ -2,18 +2,18 @@ package bbm.leetcode;
 
 /**
  * 给定一个无序的整数数组，找到其中最长上升子序列的长度。
- *
+ * <p>
  * 示例:
- *
+ * <p>
  * 输入: [10,9,2,5,3,7,101,18]
  * 输出: 4
  * 解释: 最长的上升子序列是 [2,3,7,101]，它的长度是 4。
  * 说明:
- *
+ * <p>
  * 可能会有多种最长上升子序列的组合，你只需要输出对应的长度即可。
  * 你算法的时间复杂度应该为 O(n2) 。
  * 进阶: 你能将算法的时间复杂度降低到 O(n log n) 吗?
- *
+ * <p>
  * 来源：力扣（LeetCode）
  * 链接：https://leetcode-cn.com/problems/longest-increasing-subsequence
  *
@@ -21,6 +21,10 @@ package bbm.leetcode;
  * @date 2020/5/27
  */
 public class Question300 {
+    public static void main(String[] args) {
+        System.out.println(new Question300().lengthOfLIS2(new int[]{10, 9, 2, 5, 3, 4}));
+    }
+
     public int lengthOfLIS(int[] nums) {
         if (nums == null || nums.length == 0) {
             return 0;
@@ -51,31 +55,27 @@ public class Question300 {
         int[] sorted = new int[nums.length];
         int index = 0;
         sorted[index] = nums[0];
-        for (int i = 0; i < nums.length; i++) {
-            if (nums[i] > sorted[index]) {
-                sorted[++index] = nums[i];
+        for (int num : nums) {
+            if (num > sorted[index]) {
+                sorted[++index] = num;
             } else {
                 int left = 0, right = index;
                 int less = 0;
                 while (left <= right) {
                     int mid = (left + right) / 2;
-                    if (nums[i] <= sorted[mid]) {
+                    if (num <= sorted[mid]) {
                         right = mid - 1;
                     } else {
                         less = mid;
                         left = mid + 1;
                     }
                 }
-                if (sorted[less] >= nums[i]) {
+                if (sorted[less] >= num) {
                     less--;
                 }
-                sorted[less + 1] = nums[i];
+                sorted[less + 1] = num;
             }
         }
         return index + 1;
-    }
-
-    public static void main(String[] args) {
-        System.out.println(new Question300().lengthOfLIS2(new int[] {10, 9, 2, 5, 3, 4}));
     }
 }

@@ -7,26 +7,26 @@ import java.util.TreeMap;
 
 /**
  * 找到给定字符串（由小写字符组成）中的最长子串 T ， 要求 T 中的每一字符出现次数都不少于 k 。输出 T 的长度。
- *
+ * <p>
  * 示例 1:
- *
+ * <p>
  * 输入:
  * s = "aaabb", k = 3
- *
+ * <p>
  * 输出:
  * 3
- *
+ * <p>
  * 最长子串为 "aaa" ，其中 'a' 重复了 3 次。
  * 示例 2:
- *
+ * <p>
  * 输入:
  * s = "ababbc", k = 2
- *
+ * <p>
  * 输出:
  * 5
- *
+ * <p>
  * 最长子串为 "ababb" ，其中 'a' 重复了 2 次， 'b' 重复了 3 次。
- *
+ * <p>
  * 来源：力扣（LeetCode）
  * 链接：https://leetcode-cn.com/problems/longest-substring-with-at-least-k-repeating-characters
  *
@@ -34,6 +34,10 @@ import java.util.TreeMap;
  * @date 2020/5/28
  */
 public class Question395 {
+    public static void main(String[] args) {
+        System.out.println(new Question395().longestSubstring2("aabcabb", 3));
+    }
+
     public int longestSubstring(String s, int k) {
         if (s == null || s.length() == 0) {
             return 0;
@@ -131,7 +135,7 @@ public class Question395 {
         while (start < end && charNums[chars[start] - 'a'] < k) {
             start++;
         }
-        while (start < end && charNums[chars[end-1] - 'a'] < k) {
+        while (start < end && charNums[chars[end - 1] - 'a'] < k) {
             end--;
         }
         for (int i = start; i < end; i++) {
@@ -141,9 +145,5 @@ public class Question395 {
             }
         }
         return end - start;
-    }
-
-    public static void main(String[] args) {
-        System.out.println(new Question395().longestSubstring2("aabcabb", 3));
     }
 }

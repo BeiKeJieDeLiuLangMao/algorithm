@@ -7,26 +7,26 @@ import static bbm.leetcode.Utils.print;
 
 /**
  * 给定一个包含 m x n 个元素的矩阵（m 行, n 列），请按照顺时针螺旋顺序，返回矩阵中的所有元素。
- *
+ * <p>
  * 示例 1:
- *
+ * <p>
  * 输入:
  * [
- *  [ 1, 2, 3 ],
- *  [ 4, 5, 6 ],
- *  [ 7, 8, 9 ]
+ * [ 1, 2, 3 ],
+ * [ 4, 5, 6 ],
+ * [ 7, 8, 9 ]
  * ]
  * 输出: [1,2,3,6,9,8,7,4,5]
  * 示例 2:
- *
+ * <p>
  * 输入:
  * [
- *   [1, 2, 3, 4],
- *   [5, 6, 7, 8],
- *   [9,10,11,12]
+ * [1, 2, 3, 4],
+ * [5, 6, 7, 8],
+ * [9,10,11,12]
  * ]
  * 输出: [1,2,3,4,8,12,11,10,9,5,6,7]
- *
+ * <p>
  * 来源：力扣（LeetCode）
  * 链接：https://leetcode-cn.com/problems/spiral-matrix
  *
@@ -34,6 +34,14 @@ import static bbm.leetcode.Utils.print;
  * @date 2020/5/29
  */
 public class Question54 {
+
+    public static void main(String[] args) {
+        print(new Question54().spiralOrder(new int[][]{
+                new int[]{1, 2, 3, 4},
+                new int[]{5, 6, 7, 8},
+                new int[]{9, 10, 11, 12},
+        }));
+    }
 
     public List<Integer> spiralOrder(int[][] matrix) {
         List<Integer> result = new LinkedList<>();
@@ -87,13 +95,5 @@ public class Question54 {
         for (int row = rowStart - 1; row >= rowEnd; row--) {
             result.add(matrix[row][col]);
         }
-    }
-
-    public static void main(String[] args) {
-        print(new Question54().spiralOrder(new int[][] {
-            new int[] {1, 2, 3, 4},
-            new int[] {5, 6, 7, 8},
-            new int[] {9, 10, 11, 12},
-        }));
     }
 }

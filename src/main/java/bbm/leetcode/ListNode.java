@@ -15,30 +15,15 @@ public class ListNode implements Utils.ValueIterator {
         val = x;
     }
 
-    @Override
-    public Object getValue() {
-        return val;
-    }
-
-    @Override
-    public boolean hasNext() {
-        return next != null;
-    }
-
-    @Override
-    public Utils.ValueIterator next() {
-        return next;
-    }
-
     public static ListNode build(Integer[] values) {
         ListNode head = null;
         ListNode node = null;
-        for (int i = 0; i < values.length; i++) {
+        for (Integer value : values) {
             if (head == null) {
-                head = new ListNode(values[i]);
+                head = new ListNode(value);
                 node = head;
             } else {
-                node.next = new ListNode(values[i]);
+                node.next = new ListNode(value);
                 node = node.next;
             }
         }
@@ -75,5 +60,30 @@ public class ListNode implements Utils.ValueIterator {
             node.next = map.get(position);
         }
         return head;
+    }
+
+    @Override
+    public Object getValue() {
+        return val;
+    }
+
+    @Override
+    public boolean hasNext() {
+        return next != null;
+    }
+
+    @Override
+    public Utils.ValueIterator next() {
+        return next;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        return super.equals(obj);
+    }
+
+    @Override
+    public int hashCode() {
+        return super.hashCode();
     }
 }

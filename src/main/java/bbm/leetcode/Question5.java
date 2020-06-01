@@ -6,17 +6,17 @@ import java.util.stream.IntStream;
 
 /**
  * 给定一个字符串 s，找到 s 中最长的回文子串。你可以假设 s 的最大长度为 1000。
- *
+ * <p>
  * 示例 1：
- *
+ * <p>
  * 输入: "babad"
  * 输出: "bab"
  * 注意: "aba" 也是一个有效答案。
  * 示例 2：
- *
+ * <p>
  * 输入: "cbbd"
  * 输出: "bb"
- *
+ * <p>
  * 来源：力扣（LeetCode）
  * 链接：https://leetcode-cn.com/problems/longest-palindromic-substring
  *
@@ -24,6 +24,10 @@ import java.util.stream.IntStream;
  * @date 2020/5/27
  */
 public class Question5 {
+
+    public static void main(String[] args) {
+        System.out.println(new Question5().longestPalindrome("cbbd"));
+    }
 
     public String longestPalindrome(String s) {
         if (s == null || s.length() == 0) {
@@ -58,9 +62,5 @@ public class Question5 {
             max.set(length);
             maxString.set(s.substring(left, right));
         }
-    }
-
-    public static void main(String[] args) {
-        System.out.println(new Question5().longestPalindrome("cbbd"));
     }
 }

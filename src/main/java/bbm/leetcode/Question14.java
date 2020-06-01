@@ -2,14 +2,14 @@ package bbm.leetcode;
 
 /**
  * 编写一个函数来查找字符串数组中的最长公共前缀。
- *
+ * <p>
  * 如果不存在公共前缀，返回空字符串 ""。
- *
+ * <p>
  * 示例 1:
- *
+ * <p>
  * 输入: ["flower","flow","flight"]
  * 输出: "fl"
- *
+ * <p>
  * 来源：力扣（LeetCode）
  * 链接：https://leetcode-cn.com/problems/longest-common-prefix
  *
@@ -17,6 +17,10 @@ package bbm.leetcode;
  * @date 2020/5/21
  */
 public class Question14 {
+    public static void main(String[] args) {
+        System.out.println(new Question14().longestCommonPrefix(new String[]{"flower", "flow", "flight"}));
+    }
+
     public String longestCommonPrefix(String[] strings) {
         if (strings == null || strings.length == 0) {
             return "";
@@ -70,9 +74,5 @@ public class Question14 {
             }
         }
         return res;
-    }
-
-    public static void main(String[] args) {
-        System.out.println(new Question14().longestCommonPrefix(new String[] {"flower", "flow", "flight"}));
     }
 }
