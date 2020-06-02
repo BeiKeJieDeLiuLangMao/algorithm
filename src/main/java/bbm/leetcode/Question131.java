@@ -69,6 +69,28 @@ public class Question131 {
     }
 
     public static void main(String[] args) {
-        print(new Question131().partition("efe"));
+        print(new Question131().partition2("efe"));
+    }
+
+    public List<List<String>> partition2(String s) {
+        List<List<String>> result = new ArrayList<>();
+        char[] data = s.toCharArray();
+        List<String> current = new ArrayList<>();
+        getAll(result, current, data, 0);
+        return result;
+    }
+
+    private void getAll(List<List<String>> result, List<String> current, char[] data, int startIndex) {
+        if (startIndex == data.length) {
+            result.add(new ArrayList<>(current));
+        } else {
+            for (int i = startIndex; i < data.length; i++) {
+                if (checkValid(data, startIndex, i)) {
+                    current.add(String.valueOf(data, startIndex, i - startIndex + 1));
+                    getAll(result, current, data, i + 1);
+                    current.remove(current.size() - 1);
+                }
+            }
+        }
     }
 }
