@@ -3,7 +3,7 @@ package bbm.leetcode;
 import java.util.LinkedList;
 import java.util.List;
 
-import static bbm.leetcode.Utils.print;
+import static bbm.leetcode.common.Utils.print;
 
 /**
  * 给定一个仅包含数字 2-9 的字符串，返回所有它能表示的字母组合。

@@ -1,4 +1,4 @@
-package bbm.leetcode;
+package bbm.leetcode.common;
 
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -10,11 +10,11 @@ import java.util.Queue;
  * @date 2020/5/20
  */
 public class TreeNode {
-    int val;
-    TreeNode left;
-    TreeNode right;
+    public int val;
+    public TreeNode left;
+    public TreeNode right;
 
-    TreeNode(int x) {
+    public TreeNode(int x) {
         val = x;
     }
 

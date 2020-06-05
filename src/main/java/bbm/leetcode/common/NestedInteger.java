@@ -1,4 +1,4 @@
-package bbm.leetcode;
+package bbm.leetcode.common;
 
 import java.util.List;
 
@@ -8,9 +8,9 @@ import java.util.List;
  */
 public class NestedInteger {
 
-    private boolean integer;
-    private int value;
-    private List<NestedInteger> list;
+    public boolean integer;
+    public int value;
+    public List<NestedInteger> list;
 
     public boolean isInteger() {
         return integer;

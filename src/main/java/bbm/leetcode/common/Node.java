@@ -1,4 +1,4 @@
-package bbm.leetcode;
+package bbm.leetcode.common;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -8,9 +8,9 @@ import java.util.Map;
  * @date 2020/6/3
  */
 public class Node {
-    int val;
-    Node next;
-    Node random;
+    public int val;
+    public Node next;
+    public Node random;
 
     public Node(int val) {
         this.val = val;

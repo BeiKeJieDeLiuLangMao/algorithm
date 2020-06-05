@@ -1,6 +1,8 @@
 package bbm.leetcode;
 
-import static bbm.leetcode.Utils.print;
+import bbm.leetcode.common.ListNode;
+
+import static bbm.leetcode.common.Utils.print;
 
 /**
  * 在 O(n log n) 时间复杂度和常数级空间复杂度下，对链表进行排序。

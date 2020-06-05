@@ -1,4 +1,4 @@
-package bbm.leetcode;
+package bbm.leetcode.common;
 
 import java.util.Arrays;
 import java.util.Collection;
@@ -22,6 +22,19 @@ public class Utils {
                 System.out.print("[");
                 Arrays.stream(t).forEach(item -> System.out.print(item + " "));
                 System.out.print("] ");
+            });
+        }
+        System.out.println();
+    }
+
+    public static void print(char[][] array) {
+        if (array != null) {
+            Arrays.stream(array).forEach(t -> {
+                System.out.print("[");
+                for (char c : t) {
+                    System.out.print(c + " ");
+                }
+                System.out.println("] ");
             });
         }
         System.out.println();

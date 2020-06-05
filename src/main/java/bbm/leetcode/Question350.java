@@ -2,7 +2,7 @@ package bbm.leetcode;
 
 import java.util.Arrays;
 
-import static bbm.leetcode.Utils.print;
+import static bbm.leetcode.common.Utils.print;
 
 /**
  * 给定两个数组，编写一个函数来计算它们的交集。

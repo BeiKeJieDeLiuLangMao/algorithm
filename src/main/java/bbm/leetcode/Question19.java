@@ -1,6 +1,8 @@
 package bbm.leetcode;
 
-import static bbm.leetcode.Utils.print;
+import bbm.leetcode.common.ListNode;
+
+import static bbm.leetcode.common.Utils.print;
 
 /**
  * 给定一个链表，删除链表的倒数第 n 个节点，并且返回链表的头结点。

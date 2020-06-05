@@ -1,4 +1,4 @@
-package bbm.leetcode;
+package bbm.leetcode.common;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -8,10 +8,10 @@ import java.util.Map;
  * @date 2020/5/20
  */
 public class ListNode implements Utils.ValueIterator {
-    int val;
-    ListNode next;
+    public int val;
+    public ListNode next;
 
-    ListNode(int x) {
+    public ListNode(int x) {
         val = x;
     }
 

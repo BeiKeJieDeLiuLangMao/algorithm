@@ -1,6 +1,8 @@
 package bbm.leetcode;
 
-import static bbm.leetcode.TreeNode.build;
+import bbm.leetcode.common.TreeNode;
+
+import static bbm.leetcode.common.TreeNode.build;
 
 /**
  * 给定一个二叉树，检查它是否是镜像对称的。

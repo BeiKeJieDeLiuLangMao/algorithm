@@ -6,7 +6,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
 
-import static bbm.leetcode.Utils.print;
+import static bbm.leetcode.common.Utils.print;
 
 /**
  * 给定一个 没有重复 数字的序列，返回其所有可能的全排列。

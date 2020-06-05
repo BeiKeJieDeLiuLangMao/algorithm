@@ -1,6 +1,8 @@
 package bbm.leetcode;
 
-import static bbm.leetcode.Utils.print;
+import bbm.leetcode.common.ListNode;
+
+import static bbm.leetcode.common.Utils.print;
 
 /**
  * 将两个升序链表合并为一个新的升序链表并返回。新链表是通过拼接给定的两个链表的所有节点组成的。 

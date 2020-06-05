@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import static bbm.leetcode.Utils.print;
+import static bbm.leetcode.common.Utils.print;
 
 /**
  * 给定一个非负整数 numRows，生成杨辉三角的前 numRows 行。

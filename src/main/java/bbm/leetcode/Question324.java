@@ -2,7 +2,7 @@ package bbm.leetcode;
 
 import java.util.Arrays;
 
-import static bbm.leetcode.Utils.print;
+import static bbm.leetcode.common.Utils.print;
 
 /**
  * 给定一个无序的数组 nums，将它重新排列成 nums[0] < nums[1] > nums[2] < nums[3]... 的顺序。

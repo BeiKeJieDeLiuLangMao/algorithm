@@ -3,7 +3,7 @@ package bbm.leetcode;
 import java.util.Arrays;
 import java.util.Random;
 
-import static bbm.leetcode.Utils.print;
+import static bbm.leetcode.common.Utils.print;
 
 /**
  * 打乱一个没有重复元素的数组。

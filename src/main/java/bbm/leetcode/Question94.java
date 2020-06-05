@@ -1,12 +1,13 @@
 package bbm.leetcode;
 
+import bbm.leetcode.common.TreeNode;
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
 import java.util.Stack;
 
-import static bbm.leetcode.Utils.print;
+import static bbm.leetcode.common.Utils.print;
 
 /**
  * 给定一个二叉树，返回它的中序 遍历。

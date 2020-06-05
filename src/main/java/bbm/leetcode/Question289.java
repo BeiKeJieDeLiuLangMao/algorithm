@@ -3,7 +3,7 @@ package bbm.leetcode;
 import java.util.HashSet;
 import java.util.Set;
 
-import static bbm.leetcode.Utils.print;
+import static bbm.leetcode.common.Utils.print;
 
 /**
  * 根据 百度百科 ，生命游戏，简称为生命，是英国数学家约翰·何顿·康威在 1970 年发明的细胞自动机。

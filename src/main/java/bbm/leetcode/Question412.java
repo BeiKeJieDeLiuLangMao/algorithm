@@ -3,7 +3,7 @@ package bbm.leetcode;
 import java.util.LinkedList;
 import java.util.List;
 
-import static bbm.leetcode.Utils.print;
+import static bbm.leetcode.common.Utils.print;
 
 /**
  * 写一个程序，输出从 1 到 n 数字的字符串表示。

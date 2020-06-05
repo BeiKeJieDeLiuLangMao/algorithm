@@ -1,9 +1,10 @@
 package bbm.leetcode;
 
+import bbm.leetcode.common.Node;
 import java.util.HashMap;
 import java.util.Map;
 
-import static bbm.leetcode.Node.print;
+import static bbm.leetcode.common.Node.print;
 
 /**
  * 给定一个链表，每个节点包含一个额外增加的随机指针，该指针可以指向链表中的任何节点或空节点。

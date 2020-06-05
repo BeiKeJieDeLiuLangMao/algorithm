@@ -1,7 +1,9 @@
 package bbm.leetcode;
 
-import static bbm.leetcode.ListNode.build;
-import static bbm.leetcode.Utils.print;
+import bbm.leetcode.common.ListNode;
+
+import static bbm.leetcode.common.ListNode.build;
+import static bbm.leetcode.common.Utils.print;
 
 /**
  * 反转一个单链表。

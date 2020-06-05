@@ -1,6 +1,8 @@
 package bbm.leetcode;
 
-import static bbm.leetcode.ListNode.find;
+import bbm.leetcode.common.ListNode;
+
+import static bbm.leetcode.common.ListNode.find;
 
 /**
  * 编写一个程序，找到两个单链表相交的起始节点。

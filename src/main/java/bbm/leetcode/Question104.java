@@ -1,9 +1,10 @@
 package bbm.leetcode;
 
+import bbm.leetcode.common.TreeNode;
 import java.util.LinkedList;
 import java.util.Queue;
 
-import static bbm.leetcode.TreeNode.build;
+import static bbm.leetcode.common.TreeNode.build;
 
 /**
  * 给定一个二叉树，找出其最大深度。

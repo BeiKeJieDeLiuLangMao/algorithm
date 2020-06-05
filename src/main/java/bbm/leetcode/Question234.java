@@ -1,5 +1,6 @@
 package bbm.leetcode;
 
+import bbm.leetcode.common.ListNode;
 import java.util.ArrayList;
 
 /**

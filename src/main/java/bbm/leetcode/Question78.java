@@ -3,7 +3,7 @@ package bbm.leetcode;
 import java.util.LinkedList;
 import java.util.List;
 
-import static bbm.leetcode.Utils.print;
+import static bbm.leetcode.common.Utils.print;
 
 /**
  * 给定一组不含重复元素的整数数组 nums，返回该数组所有可能的子集（幂集）。

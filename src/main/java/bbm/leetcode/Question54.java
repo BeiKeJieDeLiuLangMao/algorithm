@@ -3,7 +3,7 @@ package bbm.leetcode;
 import java.util.LinkedList;
 import java.util.List;
 
-import static bbm.leetcode.Utils.print;
+import static bbm.leetcode.common.Utils.print;
 
 /**
  * 给定一个包含 m x n 个元素的矩阵（m 行, n 列），请按照顺时针螺旋顺序，返回矩阵中的所有元素。

@@ -1,6 +1,6 @@
 package bbm.leetcode;
 
-import static bbm.leetcode.Utils.print;
+import static bbm.leetcode.common.Utils.print;
 
 /**
  * 给定一个 n × n 的二维矩阵表示一个图像。

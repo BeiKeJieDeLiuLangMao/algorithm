@@ -3,7 +3,7 @@ package bbm.leetcode;
 import java.util.Arrays;
 import java.util.Comparator;
 
-import static bbm.leetcode.Utils.print;
+import static bbm.leetcode.common.Utils.print;
 
 /**
  * 给出一个区间的集合，请合并所有重叠的区间。
