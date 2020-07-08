@@ -19,6 +19,24 @@ public class MaxSubSequence {
         return findMaxArray(nums, 0, nums.length - 1);
     }
 
+    public int maxSubArray2(int[] nums) {
+        int[] dp = new int[nums.length];
+        dp[0] = nums[0];
+        int max = dp[0];
+        for (int i = 1; i < nums.length; i++) {
+            int sum = dp[i - 1] + nums[i];
+            if (sum > nums[i]) {
+                dp[i] = sum;
+            } else {
+                dp[i] = nums[i];
+            }
+            if (dp[i] > max) {
+                max = dp[i];
+            }
+        }
+        return max;
+    }
+
     private int findMaxArray(int[] nums, int low, int max) {
         if (low == max) {
             return nums[low];
