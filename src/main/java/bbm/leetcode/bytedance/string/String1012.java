@@ -1,4 +1,4 @@
-package bbm.leetcode.bytedance;
+package bbm.leetcode.bytedance.string;
 
 import java.util.Arrays;
 
