@@ -31,7 +31,7 @@ import java.util.Map;
  */
 public class String1016Timeout {
     public static void main(String[] args) {
-        System.out.println(new String1016Timeout().checkInclusion("mart", "karma"));
+        System.out.println(new String1016Timeout().checkInclusion("helo", "ooolleoooleh"));
     }
 
     public boolean checkInclusion(String s1, String s2) {
@@ -42,15 +42,29 @@ public class String1016Timeout {
                 set.put(c, previous + 1);
             }
         }
-        char first = s1.charAt(0);
-        for (int i = 0; i < s2.length(); i++) {
-            if (first == s2.charAt(i)) {
-                changeMap(set, first, -1);
-                if (isExist(set, s2, i - 1, i + 1)) {
+        return isExist(set, s2, 0, false);
+    }
+
+    private boolean isExist(Map<Character, Integer> set, String s2, int begin, boolean hasFind) {
+        if (set.size() == 0) {
+            return true;
+        }
+        if (s2.length() - begin < set.size()) {
+            return false;
+        }
+        for (int i = begin; i < s2.length(); i++) {
+            if (set.containsKey(s2.charAt(i))) {
+                changeMap(set, s2.charAt(i), -1);
+                if (isExist(set, s2, i + 1, true)) {
                     return true;
                 } else {
-                    changeMap(set, first, 1);
+                    changeMap(set, s2.charAt(i), 1);
+                    if (hasFind) {
+                        return false;
+                    }
                 }
+            } else if (hasFind) {
+                return false;
             }
         }
         return false;
@@ -71,30 +85,4 @@ public class String1016Timeout {
         }
     }
 
-    private boolean isExist(Map<Character, Integer> set, String s2, int left, int right) {
-        if (set.size() == 0) {
-            return true;
-        }
-        if (left >= 0) {
-            if (set.containsKey(s2.charAt(left))) {
-                changeMap(set, s2.charAt(left), -1);
-                if (isExist(set, s2, left - 1, right)) {
-                    return true;
-                } else {
-                    changeMap(set, s2.charAt(left), 1);
-                }
-            }
-        }
-        if (right < s2.length()) {
-            if (set.containsKey(s2.charAt(right))) {
-                changeMap(set, s2.charAt(right), -1);
-                if (isExist(set, s2, left, right + 1)) {
-                    return true;
-                } else {
-                    changeMap(set, s2.charAt(right), 1);
-                }
-            }
-        }
-        return false;
-    }
 }
