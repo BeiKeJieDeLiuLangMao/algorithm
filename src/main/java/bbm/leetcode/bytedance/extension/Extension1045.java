@@ -1,4 +1,4 @@
-package bbm.leetcode.bytedance.ext;
+package bbm.leetcode.bytedance.extension;
 
 /**
  * 实现 int sqrt(int x) 函数。
