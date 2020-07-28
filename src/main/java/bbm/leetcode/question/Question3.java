@@ -33,6 +33,13 @@ public class Question3 {
         System.out.println(new Question3().lengthOfLongestSubstring("abcabcbb"));
     }
 
+    /**
+     * 用两层循环来遍历所有数据，第一层循环表示起始下标，第二轮循环表示从末尾下标，虽然两层循环，但是实际上复杂度还是n，
+     * 这里我们用一个桶来描述一个字符是否出现过，
+     * 在第二轮循环中如果发现当前字符在桶中从没出现过，就将当前下标记录进去，否则，就用当前下标和之前出现过的下标相减得到不重复字符串的距离
+     * 同时，我们也要修改第一轮循环地 index，让其跳到第二层循环的当前索引值之后
+     * 在这整个过程中所搜索到的所有不重复字符串，我们取它们的最大长度作为结果输出
+     */
     public int lengthOfLongestSubstring(String s) {
         if (s == null || s.length() == 0) {
             return 0;
@@ -70,6 +77,11 @@ public class Question3 {
         return maxLength;
     }
 
+    /**
+     * 这个方案中，我们对上一个实现方案进行了简化，同样使用桶来描述一个符号出现的下标，这里我们在遍历每一个符号时，我们都将该符号之前出现的 index + 1
+     * 作为 start，然后计算当前字符 i - start + 1 是否是最长的不重复字符串，是的话就保存结果，然后用当前扫描的字符下标替换桶中之前保存的值
+     * 重复上述过程最终我们就得到了最长的不重复字符串
+     */
     public int lengthOfLongestSubstring2(String s) {
         if (s == null || s.length() == 0) {
             return 0;

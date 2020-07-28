@@ -52,6 +52,10 @@ public class Offer9 {
 
         }
 
+        /**
+         * 实现思想是用两个栈来进行数据的转移，新加入的节点时，先将右栈的节点放入左栈，然后把新节点放入右栈的栈低，然后在将左栈的数据推回右栈
+         * 这样，右栈的数据顺序就是FIFO的顺序了
+         */
         public void appendTail(int value) {
             while (!stackRight.isEmpty()) {
                 stackLeft.push(stackRight.pop());

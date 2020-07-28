@@ -28,6 +28,10 @@ public class Question1 {
         print(new Question1().twoSum(new int[] {2, 7, 11, 15}, 9));
     }
 
+    /**
+     * 对于每一个遍历到的值，我们都计算 target - i 的剩余值 complement，然后将 complement 存入 hash 表，后续遍历每个数 i 时都检查 hash
+     * 表中是否存在和 i 相同的 key 有的话，说明匹配到了目标值
+     */
     public int[] twoSum(int[] nums, int target) {
         Map<Integer, Integer> map = new HashMap<>();
         for (int i = 0; i < nums.length; i++) {
