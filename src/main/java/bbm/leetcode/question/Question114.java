@@ -26,13 +26,13 @@ public class Question114 {
      * 思路是通过递归来解决，每次给定当前要挂载的 parent 节点和要挂载的目标节点，返回挂载结束之后最下层节点的指针，
      * 当 parent 为null 时表示刚开始运作，我们让 node 作为 newParent，然后分别把左节点 和 右节点挂载上去，
      * 当 parent 不为 null 时，我们先清空左指针，因为栈中保存了 parent 的左节点，然后将 parent 的 右指针指向 node
-     * 紧接着，我们让 node 作为 newParent 再递归的处理 node 的左节点 和 右节点
+     * 紧接着，我们让 node 作为 newParent 再递归的处理 node 的左节点 和 右节点，注意这里我们需要先将右节点缓存起来，
+     * 因为处理完左节点之后，node 的右指针已经发生了变化
      */
     public TreeNode flatten(TreeNode parent, TreeNode node) {
         if (parent == null) {
-            TreeNode left = node.left;
             TreeNode right = node.right;
-            TreeNode newParent = flatten(node, left);
+            TreeNode newParent = flatten(node, node.left);
             return flatten(newParent, right);
         } else {
             if (node == null) {
@@ -40,9 +40,8 @@ public class Question114 {
             } else {
                 parent.left = null;
                 parent.right = node;
-                TreeNode left = node.left;
                 TreeNode right = node.right;
-                TreeNode newParent = flatten(node, left);
+                TreeNode newParent = flatten(node, node.left);
                 return flatten(newParent, right);
             }
         }
