@@ -48,6 +48,14 @@ public class Question207 {
         }));
     }
 
+    /**
+     * 1.根据输入的课程依赖关系，转化为两个数据体:
+     *      1. 保存了每门课的前置课程数
+     *      2.保存了每门课的后置课程列表
+     * 2. 遍历所有的课程，如果该课程 i 没有前置课程就记录该课程已完成，然后将该课程 i 的所有后置课程的前置可能数 -1，
+     *      1. 如果课程 j 的前置课程数减到 0，就递归的处理课程 j，递归内容如步骤 2
+     * 3. 遍历完所有课程后，如果所有可能都已完成，就返回 true，否则返回 false
+     */
     public boolean canFinish(int numCourses, int[][] prerequisites) {
         boolean[] finishedTable = new boolean[numCourses];
         List<Integer>[] autoFinishTable = new List[numCourses];
